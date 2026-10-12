@@ -6,51 +6,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Walimatul Urus | Tysha & Shaukie</title>
     <meta name="description"
-        content="Jemputan Majlis Perkahwinan Tysha & Shaukie pada Sabtu, 26 Disember 2026 di M Diva Glass House By Diva, Kulai Johor.">
+        content="Jemputan Majlis Perkahwinan Tysha & Shaukie pada Sabtu, 26 Disember 2026 di M Diva Glass House By Diva, Kulai, Johor.">
 
     <!-- Open Graph for WhatsApp / Social Share -->
     <meta property="og:title" content="Walimatul Urus | Tysha & Shaukie">
-    <meta property="og:description" content="Sabtu, 26 Disember 2026 | M Diva Glass House By Diva, Kulai Johor">
-    <meta property="og:image" content="pasangan-rose.jpg">
+    <meta property="og:description" content="Sabtu, 26 Disember 2026 | M Diva Glass House By Diva, Kulai, Johor">
+    <meta property="og:image" content="file_00000000b764821185d9a0543c682b06.png">
     <meta property="og:type" content="website">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Great+Vibes&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Allura&family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Great+Vibes&family=Josefin+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap"
         rel="stylesheet">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
-        :root {
-            /* Palette Tema White Rose & Slight Pink Reddish + Champagne Gold */
-            --rose-deep: #4d0a1b;
-            --rose-crimson: #8c1634;
-            --rose-ruby: #ba2348;
-            --rose-accent: #e6597b;
-            --rose-soft: #fff5f8;
-            --rose-light: #fde8ef;
-            --rose-glow: rgba(230, 89, 123, 0.22);
+        /* Custom Font: Priestacy */
+        @font-face {
+            font-family: 'Priestacy';
+            src: url('Priestacy.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
 
-            --white-rose: #ffffff;
+        :root {
+            /* 1. Colour Theme Specified by User */
+            --blush-pink: #FADDE1;        /* Background and flowers */
+            --champagne-gold: #D4AF7C;    /* Monogram, borders and ornaments */
+            --burgundy: #8B1E3F;          /* Couple names and headings */
+            --ivory-white: #FFF8F4;       /* Main card background */
+
+            --rose-deep: #8B1E3F;
+            --rose-crimson: #8B1E3F;
+            --rose-ruby: #8B1E3F;
+            --rose-accent: #a8274d;
+            --rose-soft: #FADDE1;
+            --rose-light: #fcecef;
+            --rose-glow: rgba(139, 30, 63, 0.16);
+
+            --white-rose: #FFF8F4;
             --white-petal: #fffafc;
 
-            --gold-primary: #cca55a;
-            --gold-light: #f2e4c4;
-            --gold-dark: #9e7930;
-            --gold-gradient: linear-gradient(135deg, #dfbc77 0%, #caa156 50%, #9e7930 100%);
+            --gold-primary: #D4AF7C;
+            --gold-light: #f5e8d3;
+            --gold-dark: #b88f58;
+            --gold-gradient: linear-gradient(135deg, #e4c79c 0%, #D4AF7C 50%, #b88f58 100%);
 
-            --bg-page: #fcf8fa;
-            --bg-app: #ffffff;
-            --card-bg: #ffffff;
-            --card-border: rgba(230, 89, 123, 0.16);
-            --text-main: #2b141b;
-            --text-muted: #73525b;
-            --text-gold: #b3883b;
-            --shadow-soft: 0 10px 30px rgba(220, 75, 110, 0.08);
-            --shadow-card: 0 15px 35px rgba(186, 35, 72, 0.08);
+            --bg-page: #FADDE1;
+            --bg-app: #FFF8F4;
+            --card-bg: #FFF8F4;
+            --card-border: rgba(212, 175, 124, 0.45);
+            --text-main: #36121d;
+            --text-muted: #754f59;
+            --text-gold: #b88f58;
+            --shadow-soft: 0 10px 30px rgba(139, 30, 63, 0.08);
+            --shadow-card: 0 15px 35px rgba(139, 30, 63, 0.08);
         }
 
         * {
@@ -66,12 +80,12 @@
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-page);
+            background-color: var(--blush-pink);
             background-image:
-                radial-gradient(circle at 12% 15%, rgba(230, 89, 123, 0.14) 0%, transparent 42%),
-                radial-gradient(circle at 88% 85%, rgba(204, 165, 90, 0.18) 0%, transparent 40%),
-                radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.8) 0%, transparent 70%),
-                linear-gradient(180deg, #ffffff 0%, #faf1f4 100%);
+                radial-gradient(circle at 12% 15%, rgba(255, 255, 255, 0.75) 0%, transparent 40%),
+                radial-gradient(circle at 88% 85%, rgba(212, 175, 124, 0.28) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(250, 221, 225, 0.9) 0%, transparent 70%),
+                linear-gradient(180deg, #FADDE1 0%, #f7d1d7 100%);
             background-attachment: fixed;
             color: var(--text-main);
             min-height: 100vh;
@@ -107,7 +121,7 @@
             max-width: 480px;
             background-color: var(--bg-app);
             min-height: 100vh;
-            box-shadow: 0 0 70px rgba(0, 0, 0, 0.6), 0 0 20px rgba(124, 13, 35, 0.4);
+            box-shadow: 0 0 70px rgba(0, 0, 0, 0.6), 0 0 20px rgba(139, 30, 63, 0.25);
             position: relative;
             padding-bottom: 110px;
             overflow-x: hidden;
@@ -116,6 +130,14 @@
         /* Typography */
         .script-font {
             font-family: 'Great Vibes', cursive;
+        }
+
+        .allura-font {
+            font-family: 'Allura', cursive;
+        }
+
+        .priestacy-font {
+            font-family: 'Priestacy', cursive;
         }
 
         .serif-font {
@@ -470,7 +492,7 @@
             align-items: center;
             text-align: center;
             padding: 60px 20px 90px 20px;
-            background: linear-gradient(180deg, rgba(20, 5, 10, 0.28) 0%, rgba(85, 16, 35, 0.40) 50%, rgba(255, 255, 255, 0.94) 94%, #ffffff 100%),
+            background: linear-gradient(180deg, rgba(250, 221, 225, 0.82) 0%, rgba(255, 248, 244, 0.90) 50%, #FFF8F4 100%),
                 url('venue-mdiva.jpg') center center / cover no-repeat;
             overflow: hidden;
             box-sizing: border-box;
@@ -482,40 +504,56 @@
             gap: 10px;
             padding: 6px 18px;
             border-radius: 30px;
-            background: rgba(255, 255, 255, 0.92);
+            background: #FFF8F4;
             backdrop-filter: blur(10px);
-            border: 1.5px solid rgba(230, 89, 123, 0.35);
-            color: #ba2348;
+            border: 1.5px solid var(--champagne-gold);
+            color: var(--burgundy);
             font-size: 0.76rem;
             letter-spacing: 3.5px;
             text-transform: uppercase;
             font-weight: 700;
             margin-bottom: 16px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 4px 16px rgba(139, 30, 63, 0.08);
         }
 
         .hero-title-main {
-            font-size: 3.5rem;
-            line-height: 1.05;
-            color: #ffffff;
-            text-shadow: 0 3px 20px rgba(0, 0, 0, 0.85), 0 2px 6px rgba(77, 10, 27, 0.9);
+            font-family: 'Great Vibes', cursive;
+            font-size: 4.4rem;
+            line-height: 1.2;
+            color: var(--burgundy);
+            background: linear-gradient(135deg, #8B1E3F 0%, #a8274d 45%, #6e132e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 14px;
+            font-weight: 400;
+            padding: 0 20px;
+            overflow: visible;
+        }
+
+        .hero-title-main .hero-name {
+            display: inline-block;
+            padding: 0 8px;
+        }
+
+        .hero-title-main .hero-name-shaukie {
+            padding-right: 36px; /* Ruang tambahan supaya ekor kaligrafi 'e' tidak terpotong */
+            margin-right: -18px; /* Mengimbangi pemusatan optik */
         }
 
         .hero-title-main .ampersand {
             display: block;
             font-family: 'Great Vibes', cursive;
-            font-size: 2.7rem;
-            color: var(--gold-light);
-            margin: -8px 0;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+            font-size: 2.8rem;
+            color: var(--champagne-gold);
+            -webkit-text-fill-color: var(--champagne-gold);
+            margin: -10px 0;
         }
 
         .hero-date-pill {
-            background: rgba(255, 255, 255, 0.94);
+            background: #FFF8F4;
             backdrop-filter: blur(10px);
-            color: #640c21;
-            border: 1.5px solid var(--gold-primary);
+            color: var(--burgundy);
+            border: 1.5px solid var(--champagne-gold);
             padding: 8px 22px;
             border-radius: 25px;
             font-size: 0.88rem;
@@ -524,18 +562,19 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            box-shadow: 0 8px 25px rgba(186, 35, 72, 0.15);
+            box-shadow: 0 8px 25px rgba(212, 175, 124, 0.22);
             margin-bottom: 12px;
         }
 
         .hero-venue-sub {
-            color: #3b141d;
-            font-size: 0.86rem;
+            color: var(--burgundy);
+            font-size: 0.92rem;
             font-weight: 600;
-            letter-spacing: 0.8px;
+            letter-spacing: 0.5px;
             margin: 0;
             max-width: 90%;
-            line-height: 1.4;
+            line-height: 1.5;
+            text-align: center;
         }
 
         .hero-scroll-indicator {
@@ -607,9 +646,13 @@
             display: block;
         }
 
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--burgundy);
+        }
+
         .section-title {
             font-size: 2.1rem;
-            color: var(--rose-deep);
+            color: var(--burgundy);
             position: relative;
             display: inline-block;
             padding-bottom: 8px;
@@ -651,7 +694,7 @@
 
         .luxury-card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 18px 40px rgba(186, 35, 72, 0.12);
+            box-shadow: 0 18px 40px rgba(139, 30, 63, 0.12);
         }
 
         .luxury-card::before {
@@ -661,7 +704,7 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, #cca55a 0%, #e6597b 50%, #cca55a 100%);
+            background: linear-gradient(90deg, var(--champagne-gold) 0%, var(--burgundy) 50%, var(--champagne-gold) 100%);
         }
 
         /* Quran & Doa Section */
@@ -752,25 +795,64 @@
             font-size: 0.78rem;
             letter-spacing: 3px;
             text-transform: uppercase;
-            color: var(--gold-dark);
+            color: var(--champagne-gold);
             font-weight: 700;
             margin-bottom: 12px;
+            text-align: center;
         }
 
         .family-name {
-            font-size: 1.45rem;
-            color: var(--rose-deep);
-            margin-bottom: 6px;
+            font-family: 'Allura', cursive;
+            font-size: 2.4rem;
+            color: var(--burgundy);
+            margin: 0;
+            line-height: 1.2;
+            text-align: center;
+            font-weight: 400;
+        }
+
+        .family-ampersand {
+            font-family: 'Allura', cursive;
+            font-size: 2.3rem;
+            color: var(--champagne-gold);
+            line-height: 1;
+            margin: 2px 0;
+            text-align: center;
         }
 
         .couple-featured-img {
             width: 100%;
-            height: 260px;
+            max-width: 330px;
+            aspect-ratio: 1145 / 1374;
+            height: auto;
             object-fit: cover;
-            border-radius: 16px;
-            margin: 18px 0;
-            border: 2px solid rgba(203, 162, 88, 0.3);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            object-position: center top;
+            border-radius: 18px;
+            margin: 18px auto;
+            display: block;
+            border: 2px solid var(--champagne-gold);
+            box-shadow: 0 10px 25px rgba(139, 30, 63, 0.12);
+            background: #ffffff;
+        }
+
+        .couple-name {
+            font-family: 'Priestacy', cursive;
+            font-size: 2.7rem;
+            color: var(--burgundy);
+            margin: 2px 0;
+            text-align: center;
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        .couple-bridge {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            color: var(--champagne-gold);
+            font-style: italic;
+            text-align: center;
+            margin: 6px 0;
+            letter-spacing: 0.5px;
         }
 
         /* Timeline / Tentatif */
@@ -941,16 +1023,17 @@
             position: relative;
             border-radius: 16px;
             overflow: hidden;
-            aspect-ratio: 1;
+            aspect-ratio: 2 / 3;
             cursor: pointer;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            border: 2px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 20px rgba(139, 30, 63, 0.08);
+            border: 2px solid rgba(212, 175, 124, 0.45);
             transition: transform 0.3s ease;
+            background: #ffffff;
         }
 
         .gallery-item.span-2 {
             grid-column: span 2;
-            aspect-ratio: 16/10;
+            aspect-ratio: 16 / 10;
         }
 
         .gallery-item:hover {
@@ -961,6 +1044,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center top;
             display: block;
             transition: transform 0.5s ease;
         }
@@ -1428,6 +1512,17 @@
             font-size: 0.78rem;
         }
 
+        .footer-event-details {
+            font-family: 'Josefin Sans', sans-serif;
+            text-align: center;
+            font-size: 0.92rem;
+            line-height: 1.65;
+            letter-spacing: 0.5px;
+            color: #8b6e75;
+            margin: 8px auto 6px auto;
+            font-weight: 400;
+        }
+
         .footer-wrap a {
             color: var(--rose-ruby);
             text-decoration: none;
@@ -1451,7 +1546,7 @@
     <!-- Sampul / Envelope Pembuka Interaktif (Original Artwork) -->
     <div id="envelope-overlay">
         <div class="env-cover-card" onclick="bukaKad()">
-            <img src="kad-jemputan-cover-tall.jpg" alt="Kad Jemputan Walimatul Urus Tysha &amp; Shaukie" class="env-cover-img">
+            <img src="kad-jemputan-cover-v2.jpg?v=20261013-polished-gold-hd" alt="Kad Jemputan Walimatul Urus Tysha &amp; Shaukie" class="env-cover-img">
             <button class="btn-open-card-hotspot" onclick="bukaKad()" aria-label="Buka Kad Jemputan"></button>
         </div>
     </div>
@@ -1488,24 +1583,25 @@
         <!-- 1. HERO SECTION -->
         <section id="utama" class="hero-section">
             <div class="hero-rose-badge reveal-on-scroll delay-1">
-                <i class="fas fa-heart" style="font-size: 0.65rem; color: #e6597b;"></i> Walimatul Urus <i
-                    class="fas fa-heart" style="font-size: 0.65rem; color: #e6597b;"></i>
+                <i class="fas fa-heart" style="font-size: 0.65rem; color: var(--champagne-gold);"></i> Walimatul Urus <i
+                    class="fas fa-heart" style="font-size: 0.65rem; color: var(--champagne-gold);"></i>
             </div>
 
-            <h1 class="serif-font hero-title-main reveal-on-scroll delay-2">
-                Tysha
+            <h1 class="hero-title-main reveal-on-scroll delay-2">
+                <span class="hero-name">Tysha</span>
                 <span class="ampersand">&</span>
-                Shaukie
+                <span class="hero-name hero-name-shaukie">Shaukie</span>
             </h1>
 
             <div class="hero-date-pill reveal-on-scroll delay-3">
-                <i class="far fa-calendar-check" style="color: var(--gold-dark);"></i>
+                <i class="far fa-calendar-check" style="color: var(--champagne-gold);"></i>
                 Sabtu, 26 Disember 2026
             </div>
 
             <p class="hero-venue-sub reveal-on-scroll delay-4">
-                <i class="fas fa-map-pin" style="color: var(--rose-ruby); margin-right: 4px;"></i>
-                M Diva Glass House By Diva, Kulai, Johor
+                <i class="fas fa-map-pin" style="color: var(--champagne-gold); margin-bottom: 4px; display: inline-block;"></i><br>
+                <span>M Diva Glass House By Diva</span><br>
+                <span>Kulai, Johor</span>
             </p>
 
             <div class="hero-scroll-indicator reveal-fade delay-5">
@@ -1518,21 +1614,21 @@
         <section id="mempelai">
             <div class="section-header reveal-on-scroll">
                 <span class="section-subtitle">Bersama Menjemput</span>
-                <h2 class="serif-font section-title">Jemputan Raja Sehari</h2>
+                <h2 class="serif-font section-title">Undangan Majlis Perkahwinan</h2>
             </div>
 
             <p class="section-desc reveal-on-scroll delay-1" style="margin-bottom: 25px;">
-                Dengan penuh kesyukuran ke hadrat Ilahi, kami mempersilakan Dato' / Datin / Tuan / Puan / Encik / Cik
-                sekeluarga ke majlis perkahwinan puteri kami.
+                Dengan penuh kesyukuran ke hadrat Ilahi, kami menjemput Dato' / Datin / Tuan / Puan / Encik / Cik
+                seisi keluarga ke majlis perkahwinan puteri kami.
             </p>
 
-            <div class="luxury-card family-card reveal-scale">
+            <div class="luxury-card family-card reveal-scale" style="text-align: center;">
                 <div class="family-role">Ibu Bapa Pengantin Perempuan</div>
-                <h3 class="serif-font family-name">Mohd Shair Bin Samad</h3>
-                <div class="script-font" style="font-size: 1.8rem; color: var(--gold-dark); margin: -4px 0;">&</div>
-                <h3 class="serif-font family-name">Yati Binti Yunus</h3>
+                <h3 class="allura-font family-name">Mohd Shair bin Samad</h3>
+                <div class="allura-font family-ampersand">&</div>
+                <h3 class="allura-font family-name">Yati binti Yunus</h3>
 
-                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 10px;">
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 10px; text-align: center;">
                     bersama-sama merakamkan setinggi-tinggi penghargaan dan kesyukuran atas kehadiran para tetamu
                     jemputan.
                 </p>
@@ -1541,15 +1637,13 @@
             <!-- Potret Mempelai -->
             <div class="luxury-card reveal-scale delay-1" style="text-align: center;">
                 <span class="section-subtitle">Mempelai Yang Diraikan</span>
-                <img src="pasangan-rose.jpg" alt="Tysha & Shaukie" class="couple-featured-img">
+                <img src="file_00000000b764821185d9a0543c682b06.png" alt="Tysha & Shaukie" class="couple-featured-img" style="cursor: pointer;" onclick="openLightbox('file_00000000b764821185d9a0543c682b06.png', 'Mempelai Tysha &amp; Shaukie')">
 
-                <h3 class="serif-font" style="font-size: 1.5rem; color: var(--rose-deep); margin-bottom: 4px;">Nur Tysha
-                    Atikah</h3>
-                <div class="script-font" style="font-size: 1.8rem; color: var(--gold-dark); margin: -6px 0;">dengan
-                    pasangan pilihannya</div>
-                <h3 class="serif-font" style="font-size: 1.5rem; color: var(--rose-deep);">Ahmad Shaukie</h3>
+                <h3 class="priestacy-font couple-name">Nur Tysha Atikah</h3>
+                <div class="serif-font couple-bridge">dengan pasangan pilihannya</div>
+                <h3 class="priestacy-font couple-name">Ahmad Shaukie</h3>
 
-                <p style="font-size: 0.84rem; color: var(--text-muted); margin-top: 12px; font-style: italic;">
+                <p style="font-size: 0.84rem; color: var(--text-muted); margin-top: 12px; font-style: italic; text-align: center;">
                     "Semoga ikatan suci yang dibina ini sentiasa dirahmati, diberkati, dan kekal bahagia hingga ke
                     syurga."
                 </p>
@@ -1569,40 +1663,30 @@
                         <div class="timeline-dot"></div>
                         <span class="timeline-time"><i class="far fa-clock"></i> 11:00 PAGI</span>
                         <h4 class="timeline-title">Ketibaan Para Tetamu & Jamuan Makan</h4>
-                        <p class="timeline-desc">Kaunter salam sambut dibuka dan jamuan makan tengah hari bermula buat
-                            para tetamu jemputan.</p>
                     </div>
 
                     <div class="timeline-item reveal-on-scroll delay-2">
                         <div class="timeline-dot"></div>
                         <span class="timeline-time"><i class="far fa-clock"></i> 12:30 TENGAH HARI</span>
                         <h4 class="timeline-title">Ketibaan Mempelai & Perarakan Masuk</h4>
-                        <p class="timeline-desc">Perarakan masuk Raja Sehari ke pelamin diiringi alunan selawat dan doa
-                            kesyukuran.</p>
                     </div>
 
                     <div class="timeline-item reveal-on-scroll delay-3">
                         <div class="timeline-dot"></div>
                         <span class="timeline-time"><i class="far fa-clock"></i> 01:00 PETANG</span>
                         <h4 class="timeline-title">Makan Beradab & Memotong Kek</h4>
-                        <p class="timeline-desc">Upacara santapan makan beradab bersama keluarga tercinta disusuli acara
-                            memotong kek perkahwinan.</p>
                     </div>
 
                     <div class="timeline-item reveal-on-scroll delay-4">
                         <div class="timeline-dot"></div>
                         <span class="timeline-time"><i class="far fa-clock"></i> 01:30 PETANG</span>
                         <h4 class="timeline-title">Sesi Fotografi & Ramah Mesra</h4>
-                        <p class="timeline-desc">Sesi bergambar kenangan bersama tetamu, sanak-saudara, rakan taulan dan
-                            sahabat handai.</p>
                     </div>
 
                     <div class="timeline-item reveal-on-scroll delay-5">
                         <div class="timeline-dot"></div>
                         <span class="timeline-time"><i class="far fa-clock"></i> 04:00 PETANG</span>
                         <h4 class="timeline-title">Majlis Bersurai</h4>
-                        <p class="timeline-desc">Penutup majlis. Semoga langkah pulang para tetamu dilindungi Allah SWT.
-                        </p>
                     </div>
                 </div>
             </div>
@@ -1665,20 +1749,20 @@
 
             <div class="gallery-grid">
                 <div class="gallery-item span-2 reveal-scale delay-1"
-                    onclick="openLightbox('venue-mdiva.jpg', 'Dewan M Diva Glass House By Diva')">
-                    <img src="venue-mdiva.jpg" alt="Dewan M Diva Glass House By Diva">
+                    onclick="openLightbox('file_00000000e57c8211b6bb81bc5ac299ad.png', 'Memori Tysha &amp; Shaukie')">
+                    <img src="file_00000000e57c8211b6bb81bc5ac299ad.png" alt="Memori Tysha &amp; Shaukie" style="object-position: center 42%;">
                     <div class="gallery-overlay-badge">
                         <i class="fas fa-expand"></i> Sentuh untuk besarkan
                     </div>
                 </div>
 
-                <div class="gallery-item reveal-scale delay-2" onclick="openLightbox('pasangan-rose.jpg', 'Mempelai Tysha & Shaukie')">
-                    <img src="pasangan-rose.jpg" alt="Tysha & Shaukie">
+                <div class="gallery-item reveal-scale delay-2" onclick="openLightbox('WhatsApp Image 2026-10-12 at 6.29.06 PM.jpeg', 'Memori Tysha &amp; Shaukie')">
+                    <img src="WhatsApp Image 2026-10-12 at 6.29.06 PM.jpeg" alt="Memori Tysha &amp; Shaukie">
                     <div class="gallery-overlay-badge"><i class="fas fa-search-plus"></i></div>
                 </div>
 
-                <div class="gallery-item reveal-scale delay-3" onclick="openLightbox('pelamin-rose.jpg', 'Pelamin Rose Merah & Emas')">
-                    <img src="pelamin-rose.jpg" alt="Pelamin Rose Merah">
+                <div class="gallery-item reveal-scale delay-3" onclick="openLightbox('WhatsApp Image 2026-10-12 at 8.35.33 PM.jpeg', 'Memori Tysha &amp; Shaukie')">
+                    <img src="WhatsApp Image 2026-10-12 at 8.35.33 PM.jpeg" alt="Memori Tysha &amp; Shaukie">
                     <div class="gallery-overlay-badge"><i class="fas fa-search-plus"></i></div>
                 </div>
             </div>
@@ -1739,7 +1823,7 @@
                 <form id="form-rsvp" onsubmit="hantarRSVP(event)">
                     <div class="form-group">
                         <label class="form-label" for="rsvp-nama">Nama Penuh Tetamu</label>
-                        <input type="text" id="rsvp-nama" class="form-control" placeholder="Cth: Dato' Ahmad Albab"
+                        <input type="text" id="rsvp-nama" class="form-control" placeholder="Nama penuh anda"
                             required>
                     </div>
 
@@ -1810,7 +1894,7 @@
                 <form id="form-ucapan-langsung" onsubmit="tambahUcapanWeb(event)">
                     <div class="form-group">
                         <label class="form-label" for="nama-ucapan">Nama Anda</label>
-                        <input type="text" id="nama-ucapan" class="form-control" placeholder="Cth: Cikgu Razak"
+                        <input type="text" id="nama-ucapan" class="form-control" placeholder="Nama anda"
                             required>
                     </div>
                     <div class="form-group">
@@ -1958,11 +2042,14 @@
 
         <!-- FOOTER -->
         <div class="footer-wrap reveal-on-scroll">
-            <div class="script-font" style="font-size: 2.2rem; color: var(--rose-ruby); margin-bottom: 5px;">Tysha &
-                Shaukie</div>
-            <p>Walimatul Urus • 26 Disember 2026 • M Diva Glass House By Diva, Kulai Johor</p>
+            <div class="script-font" style="font-size: 2.2rem; color: var(--burgundy); margin-bottom: 5px; padding: 0 15px;">Tysha <span style="color: var(--champagne-gold);">&</span> <span style="padding-right: 18px; display: inline-block;">Shaukie</span></div>
+            <p class="footer-event-details">
+                26 Disember 2026<br>
+                M Diva Glass House by Diva<br>
+                Kulai, Johor
+            </p>
             <p
-                style="margin-top: 10px; font-size: 0.95rem; font-weight: 700; color: var(--rose-ruby); letter-spacing: 1px;">
+                style="margin-top: 10px; font-size: 0.95rem; font-weight: 700; color: var(--burgundy); letter-spacing: 1px;">
                 #TyshaFoundTheKie🔑</p>
         </div>
 
@@ -2020,8 +2107,8 @@
                 this.angle = Math.random() * Math.PI * 2;
                 this.rotSpeed = (Math.random() - 0.5) * 0.03;
                 this.opacity = Math.random() * 0.55 + 0.35;
-                // White rose & slight pink-reddish petals (dominan mawar putih)
-                const colors = ['#ffffff', '#ffffff', '#fffafc', '#fff2f5', '#fce2e8', '#f8bac8', '#e7567a', '#c2274d'];
+                // Skema warna tema: Blush Pink (#FADDE1), Ivory White (#FFF8F4), Burgundy (#8B1E3F) & Champagne Gold (#D4AF7C)
+                const colors = ['#FADDE1', '#FADDE1', '#fce8ec', '#f7cad0', '#FFF8F4', '#8B1E3F', '#D4AF7C'];
                 this.color = colors[Math.floor(Math.random() * colors.length)];
             }
 
@@ -2049,9 +2136,9 @@
                 ctx.bezierCurveTo(this.size * 0.4, this.size, -this.size * 0.4, this.size, -this.size * 0.8, this.size * 0.6);
                 ctx.bezierCurveTo(-this.size, -this.size * 0.3, -this.size * 0.6, -this.size * 0.8, 0, 0);
                 ctx.fill();
-                // Delicate pink blush border for white rose petals
-                if (this.color === '#ffffff' || this.color === '#fffafc' || this.color === '#fff2f5') {
-                    ctx.strokeStyle = 'rgba(231, 86, 122, 0.4)';
+                // Delicate champagne gold border for blush pink / ivory petals
+                if (this.color === '#FADDE1' || this.color === '#fce8ec' || this.color === '#FFF8F4') {
+                    ctx.strokeStyle = 'rgba(212, 175, 124, 0.45)';
                     ctx.lineWidth = 0.8;
                     ctx.stroke();
                 }
@@ -2149,19 +2236,19 @@
                 this.wobbleSpeed = Math.random() * 0.1 + 0.06;
                 this.alpha = 1.0;
 
-                // Skema warna mewah
+                // Skema warna tema: Blush Pink (#FADDE1), Champagne Gold (#D4AF7C), Burgundy (#8B1E3F), Ivory White (#FFF8F4)
                 if (this.type === 'petal') {
-                    const petalColors = ['#ba2348', '#e7567a', '#f8bac8', '#ffffff', '#80122e', '#fce2e8'];
+                    const petalColors = ['#8B1E3F', '#FADDE1', '#fce8ec', '#FFF8F4', '#D4AF7C'];
                     this.color = petalColors[Math.floor(Math.random() * petalColors.length)];
                 } else if (this.type === 'gold') {
-                    const goldColors = ['#cca55a', '#f7d58a', '#e5c158', '#ffd700', '#fff2b2'];
+                    const goldColors = ['#D4AF7C', '#e4c79c', '#f5e8d3', '#b88f58', '#FFF8F4'];
                     this.color = goldColors[Math.floor(Math.random() * goldColors.length)];
                 } else if (this.type === 'heart') {
-                    const heartColors = ['#e6597b', '#d81b60', '#ba2348', '#ff4081', '#cca55a'];
+                    const heartColors = ['#8B1E3F', '#a8274d', '#FADDE1', '#D4AF7C'];
                     this.color = heartColors[Math.floor(Math.random() * heartColors.length)];
                 } else {
                     // sparkle
-                    this.color = '#fff6cc';
+                    this.color = '#FFF8F4';
                 }
             }
 
@@ -2702,27 +2789,87 @@
             localStorage.setItem('tysha_wishes_likes_map', JSON.stringify(map));
         }
 
-        async function muatUcapan() {
-            // Ambil data live daripada Google Sheets
-            if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL.trim() !== "") {
-                try {
-                    const res = await fetch(GOOGLE_SCRIPT_URL + "?action=get_ucapan");
-                    const json = await res.json();
-                    if (json && json.status === "success" && Array.isArray(json.data)) {
-                        currentWishes = json.data;
-                        localStorage.setItem('wishes_shaukie_tysha', JSON.stringify(currentWishes));
-                        paparkanUcapan(currentWishes);
-                        return;
+        function isDummyWish(item) {
+            if (!item) return true;
+            const name = (item.nama || '').toLowerCase();
+            const text = (item.teks || '').toLowerCase();
+            return name.includes('albab') || name.includes('dummy') || name.includes('test') || name.includes('cikgu razak') || text.includes('dummy wish') || text.includes('test wish');
+        }
+
+        function muatUcapan() {
+            // 1. LANGKAH PANTAS (0ms): Muatkan ucapan dari simpanan setempat (localStorage) serta-merta
+            let hasCached = false;
+            try {
+                const saved = localStorage.getItem('wishes_shaukie_tysha');
+                if (saved) {
+                    const parsed = JSON.parse(saved);
+                    if (Array.isArray(parsed) && parsed.length > 0) {
+                        currentWishes = parsed.filter(w => !isDummyWish(w));
+                        if (currentWishes.length > 0) {
+                            paparkanUcapan(currentWishes);
+                            hasCached = true;
+                        }
                     }
-                } catch (err) {
-                    console.log("Memuatkan ucapan simpanan tempatan...", err);
+                }
+            } catch (e) {
+                console.error("Gagal membaca cache ucapan:", e);
+            }
+
+            // Jika belum ada sebarang ucapan dalam simpanan peranti, tunjukkan penunjuk muatan pantas
+            if (!hasCached) {
+                const container = document.getElementById('wishes-container');
+                if (container) {
+                    container.innerHTML = `
+                        <div style="text-align: center; padding: 22px 16px; color: var(--text-muted); font-size: 0.85rem; background: rgba(255,248,244,0.6); border-radius: 14px; border: 1px dashed rgba(212,175,124,0.35); margin-top: 15px;">
+                            <i class="fas fa-circle-notch fa-spin" style="font-size: 1.4rem; color: var(--champagne-gold); margin-bottom: 8px; display: block;"></i>
+                            Menyemak buku ucapan...
+                        </div>
+                    `;
                 }
             }
 
-            // Fallback ke LocalStorage jika luar talian
-            let saved = localStorage.getItem('wishes_shaukie_tysha');
-            currentWishes = saved ? JSON.parse(saved) : [];
-            paparkanUcapan(currentWishes);
+            // 2. LANGKAH LATAR BELAKANG: Ambil data live secara tidak menyekat (asynchronous)
+            segerakanUcapanLive(hasCached);
+        }
+
+        async function segerakanUcapanLive(hasCached) {
+            if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.trim() === "") {
+                if (!hasCached) paparkanUcapan([]);
+                return;
+            }
+
+            try {
+                // AbortController timeout 6 saat untuk sambungan perlahan
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 6000);
+
+                const res = await fetch(GOOGLE_SCRIPT_URL + "?action=get_ucapan", {
+                    signal: controller.signal
+                });
+                clearTimeout(timeoutId);
+
+                const json = await res.json();
+                if (json && json.status === "success" && Array.isArray(json.data)) {
+                    const filteredLive = json.data.filter(w => !isDummyWish(w));
+                    const liveStr = JSON.stringify(filteredLive);
+                    const currentStr = JSON.stringify(currentWishes);
+
+                    // Hanya kemaskini UI jika ada perubahan rekod bagi mengelakkan kelipan
+                    if (liveStr !== currentStr || !hasCached) {
+                        currentWishes = filteredLive;
+                        localStorage.setItem('wishes_shaukie_tysha', liveStr);
+                        paparkanUcapan(currentWishes);
+                    }
+                    return;
+                }
+            } catch (err) {
+                console.log("Penyelarasan ucapan selesai dengan cache tempatan.");
+            }
+
+            // Jika ralat sambungan dan tiada cache sedia ada, paparkan keadaan kosong
+            if (!hasCached && (!currentWishes || currentWishes.length === 0)) {
+                paparkanUcapan([]);
+            }
         }
 
         function paparkanUcapan(list) {
@@ -2733,8 +2880,8 @@
 
             if (currentWishes.length === 0) {
                 container.innerHTML = `
-                    <div style="text-align: center; padding: 28px 16px; color: var(--text-muted); font-size: 0.85rem; background: rgba(255,255,255,0.6); border-radius: 14px; border: 1px dashed rgba(230,89,123,0.25); margin-top: 15px;">
-                        <i class="far fa-heart" style="font-size: 1.6rem; color: var(--rose-blush); margin-bottom: 8px; display: block;"></i>
+                    <div style="text-align: center; padding: 28px 16px; color: var(--text-muted); font-size: 0.85rem; background: rgba(255,248,244,0.7); border-radius: 14px; border: 1px dashed rgba(212,175,124,0.45); margin-top: 15px;">
+                        <i class="far fa-heart" style="font-size: 1.6rem; color: var(--champagne-gold); margin-bottom: 8px; display: block;"></i>
                         Belum ada ucapan lagi. Jadilah yang pertama menitipkan doa & ucapan melalui borang di atas atau RSVP!
                     </div>
                 `;
