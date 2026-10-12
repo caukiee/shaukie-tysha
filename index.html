@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Great+Vibes&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap"
         rel="stylesheet">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -90,6 +90,17 @@
             z-index: 10001;
         }
 
+        /* Canvas Letupan Confetti & Kelopak Mawar Emas (Item #3) */
+        #celebration-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10002;
+        }
+
         /* Container Mobile App */
         .app-container {
             width: 100%;
@@ -117,6 +128,7 @@
         }
 
         /* Sampul / Envelope Overlay (White Rose & Slight Pink Reddish Aesthetic) */
+        /* Sampul / Envelope Overlay (Luxurious Card Cover) */
         #envelope-overlay {
             position: fixed;
             top: 0;
@@ -125,398 +137,204 @@
             width: 100%;
             max-width: 480px;
             height: 100%;
-            background: linear-gradient(170deg, #ffffff 0%, #fff7f9 32%, #fef0f4 68%, #fae2e8 100%);
+            background: #fdf2f4;
             z-index: 9999;
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 34px 20px 28px 20px;
+            padding: 0;
             box-shadow: 0 0 50px rgba(220, 75, 110, 0.12);
             transition: transform 1.1s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
-            overflow-y: auto;
+            overflow: hidden;
+            cursor: pointer;
         }
 
-        /* Ambient Glowing Fairy Circles */
-        #envelope-overlay::before {
-            content: '';
-            position: absolute;
-            top: -40px;
-            right: -40px;
-            width: 220px;
-            height: 220px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(230, 89, 123, 0.18) 0%, transparent 70%);
-            pointer-events: none;
-            animation: fairyFloat 6s ease-in-out infinite alternate;
-        }
-
-        #envelope-overlay::after {
-            content: '';
-            position: absolute;
-            bottom: 30px;
-            left: -40px;
-            width: 210px;
-            height: 210px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(204, 165, 90, 0.22) 0%, transparent 70%);
-            pointer-events: none;
-            animation: fairyFloat 5s ease-in-out infinite alternate-reverse;
-        }
-
-        @keyframes fairyFloat {
-            0% {
-                transform: translateY(0px) scale(1);
-            }
-
-            100% {
-                transform: translateY(18px) scale(1.1);
-            }
-        }
-
-        /* Soft Floating Card */
-        .env-card-frame {
-            width: 100%;
-            max-width: 380px;
-            margin: auto 0;
-            background: rgba(255, 255, 255, 0.94);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 36px;
-            border: 2.5px solid rgba(255, 255, 255, 0.98);
-            box-shadow: 0 16px 45px rgba(220, 75, 110, 0.14), 0 5px 20px rgba(204, 165, 90, 0.14);
-            padding: 8px;
-            position: relative;
-            animation: cardFloat 5s ease-in-out infinite;
-        }
-
-        @keyframes cardFloat {
-
-            0%,
-            100% {
-                transform: translateY(0);
-                box-shadow: 0 16px 45px rgba(220, 75, 110, 0.14), 0 5px 20px rgba(204, 165, 90, 0.14);
-            }
-
-            50% {
-                transform: translateY(-6px);
-                box-shadow: 0 22px 50px rgba(220, 75, 110, 0.2), 0 8px 24px rgba(204, 165, 90, 0.2);
-            }
-        }
-
-        .env-card-inner {
-            border-radius: 30px;
-            border: 1px solid rgba(204, 165, 90, 0.4);
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 245, 248, 0.95) 100%);
-            padding: 26px 18px 22px 18px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        /* Sweet Animated Rose Badge */
-        .env-tag-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: #ffffff;
-            border: 1.5px solid rgba(230, 89, 123, 0.32);
-            padding: 6px 18px;
-            border-radius: 50px;
-            margin-bottom: 15px;
-            box-shadow: 0 4px 14px rgba(220, 75, 110, 0.1);
-            animation: tagPulse 3s ease-in-out infinite;
-        }
-
-        @keyframes tagPulse {
-
-            0%,
-            100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.03);
-            }
-        }
-
-        .env-tag-text {
-            font-size: 0.74rem;
-            letter-spacing: 3.5px;
-            color: #ba2348;
-            text-transform: uppercase;
-            font-weight: 700;
-        }
-
-        .env-tag-rose {
-            color: #e6597b;
-            font-size: 0.85rem;
-            animation: roseSpin 4s ease-in-out infinite alternate;
-        }
-
-        @keyframes roseSpin {
-            0% {
-                transform: rotate(-8deg);
-            }
-
-            100% {
-                transform: rotate(8deg);
-            }
-        }
-
-        /* Animated Bismillah Khat Emblem */
-        .couple-emblem-wrap {
-            position: relative;
-            width: 155px;
-            height: 155px;
-            margin: 0 auto 12px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: emblemGentleBreath 4s ease-in-out infinite;
-        }
-
-        .couple-emblem-halo {
-            position: absolute;
-            inset: -8px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(204, 165, 90, 0.35) 0%, rgba(230, 89, 123, 0.15) 50%, transparent 75%);
-            animation: haloPulse 3s ease-in-out infinite alternate;
-            pointer-events: none;
-        }
-
-        .couple-emblem-ring {
-            display: none;
-        }
-
-        .couple-emblem-img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            filter: drop-shadow(0 8px 18px rgba(186, 35, 72, 0.12)) drop-shadow(0 3px 8px rgba(204, 165, 90, 0.2));
+        .env-cover-card {
             position: relative;
             z-index: 2;
-            display: block;
-        }
-
-        @keyframes emblemGentleBreath {
-
-            0%,
-            100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.025);
-            }
-        }
-
-        @keyframes haloPulse {
-            0% {
-                transform: scale(0.96);
-                opacity: 0.55;
-            }
-
-            100% {
-                transform: scale(1.07);
-                opacity: 0.9;
-            }
-        }
-
-        /* Couple Names - Romantic Rosewood & Gold */
-        .env-names-wrap {
-            margin: 4px 0 8px 0;
-        }
-
-        .env-couple-title {
-            font-family: 'Playfair Display', serif;
-            font-weight: 600;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0px;
-        }
-
-        .env-couple-title .env-name {
-            font-size: 2.75rem;
-            letter-spacing: 1.5px;
-            line-height: 1.1;
-            font-weight: 600;
-            color: #640c21;
-            text-shadow: 0 2px 10px rgba(100, 12, 33, 0.1);
-        }
-
-        .env-couple-title .env-amp {
-            font-family: 'Great Vibes', cursive;
-            color: #9e6b18;
-            font-size: 2.3rem;
-            font-weight: 400;
-            line-height: 0.85;
-            margin: -3px 0;
-            text-shadow: 0 1px 3px rgba(158, 107, 24, 0.2);
-        }
-
-        /* Delicate Rose Divider */
-        .env-divider {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            width: 140px;
-            margin: 10px auto 12px auto;
-        }
-
-        .env-divider-line {
-            height: 1px;
-            flex: 1;
-            background: linear-gradient(90deg, transparent, rgba(230, 89, 123, 0.4));
-        }
-
-        .env-divider .env-divider-line:last-child {
-            background: linear-gradient(90deg, rgba(230, 89, 123, 0.4), transparent);
-        }
-
-        .env-divider-sparkle {
-            color: #cca55a;
-            font-size: 0.75rem;
-            animation: sparkleTwinkle 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes sparkleTwinkle {
-            0% {
-                transform: scale(0.85);
-                opacity: 0.6;
-            }
-
-            100% {
-                transform: scale(1.15);
-                opacity: 1;
-            }
-        }
-
-        /* Date & Venue Box (Sangat Jelas, Kontras Tinggi & Mudah Dibaca) */
-        .env-details-box {
-            background: #ffffff;
-            border: 1.5px solid rgba(230, 89, 123, 0.35);
-            border-radius: 20px;
-            padding: 13px 20px;
             width: 100%;
-            max-width: 330px;
-            margin: 6px auto 0 auto;
-            box-shadow: 0 6px 20px rgba(186, 35, 72, 0.08);
-        }
-
-        .env-date {
-            color: #640c21;
-            font-size: 0.95rem;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            font-weight: 700;
-            margin-bottom: 5px;
+            height: 100%;
             display: flex;
-            align-items: center;
             justify-content: center;
-            gap: 7px;
-        }
-
-        .env-date i {
-            color: #e6597b;
-            font-size: 0.95rem;
-        }
-
-        .env-venue {
-            color: #2e1017;
-            font-size: 0.85rem;
-            letter-spacing: 0.8px;
-            font-weight: 600;
-            display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 6px;
         }
 
-        .env-venue i {
-            color: #e6597b;
-            font-size: 0.9rem;
+        .env-cover-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            user-select: none;
+            -webkit-user-drag: none;
+            image-rendering: -webkit-optimize-contrast;
         }
 
-        /* Animated White Rose & Pink-Reddish Glowing Button */
-        .btn-open-card {
-            background: linear-gradient(135deg, #e7567a 0%, #b82348 100%);
-            color: #ffffff;
-            padding: 15px 38px;
+        .btn-open-card-hotspot {
+            position: absolute;
+            bottom: 8.6%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 59%;
+            height: 6.6%;
             border-radius: 50px;
-            border: 2px solid rgba(255, 255, 255, 0.92);
-            font-size: 0.88rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            background: transparent;
+            border: 1.5px solid transparent;
+            box-sizing: border-box;
             cursor: pointer;
-            box-shadow: 0 10px 28px rgba(231, 86, 122, 0.4), 0 0 18px rgba(231, 86, 122, 0.22);
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            transition: all 0.3s ease;
-            position: relative;
-            margin-top: 16px;
-            animation: btnGlowPulse 2.8s ease-in-out infinite;
+            z-index: 10;
+            transition: all 0.25s ease;
         }
 
-        @keyframes btnGlowPulse {
-
-            0%,
-            100% {
-                transform: translateY(0) scale(1);
-                box-shadow: 0 10px 25px rgba(231, 86, 122, 0.38), 0 0 15px rgba(231, 86, 122, 0.2);
-            }
-
-            50% {
-                transform: translateY(-2px) scale(1.02);
-                box-shadow: 0 16px 32px rgba(231, 86, 122, 0.52), 0 0 25px rgba(231, 86, 122, 0.38);
-            }
+        .btn-open-card-hotspot:hover {
+            box-shadow: 0 0 15px rgba(255, 235, 190, 0.75), 0 0 25px rgba(231, 86, 122, 0.35);
+            border-color: rgba(255, 245, 220, 0.85);
+            background: rgba(255, 255, 255, 0.05);
         }
 
-        .btn-open-card:hover {
-            transform: translateY(-3px) scale(1.04);
-            box-shadow: 0 18px 36px rgba(231, 86, 122, 0.58), 0 0 30px rgba(231, 86, 122, 0.45);
+        .btn-open-card-hotspot:active {
+            transform: translateX(-50%) scale(0.98);
         }
 
-        .btn-open-card:active {
-            transform: translateY(0) scale(0.99);
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
 
-        /* Floating Audio Toggle */
-        .music-toggle-btn {
+        /* ========================================================
+           ITEM #6: FLOATING MINI MUSIC PLAYER BAR
+           ======================================================== */
+        .music-player-wrap {
             position: fixed;
             top: 22px;
-            right: 22px;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(8px);
-            width: 46px;
-            height: 46px;
+            right: max(16px, calc(50% - 240px + 16px));
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1.5px solid rgba(204, 165, 90, 0.45);
+            box-shadow: 0 8px 26px rgba(0, 0, 0, 0.16), 0 2px 8px rgba(186, 35, 72, 0.12);
+            border-radius: 999px;
+            height: 44px;
+            padding: 3px 4px 3px 12px;
+            display: none; /* Papar bila kad dibuka */
+            align-items: center;
+            gap: 9px;
+            cursor: pointer;
+            z-index: 1001;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+            max-width: 235px;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        .music-player-wrap:hover {
+            box-shadow: 0 10px 32px rgba(186, 35, 72, 0.22), 0 3px 10px rgba(0, 0, 0, 0.18);
+            transform: translateY(-1px);
+        }
+
+        /* Equalizer Sound Wave Bars */
+        .music-eq-bars {
+            display: flex;
+            align-items: flex-end;
+            gap: 2.5px;
+            height: 16px;
+            padding-bottom: 2px;
+            flex-shrink: 0;
+        }
+
+        .eq-bar {
+            width: 2.5px;
+            height: 3.5px;
+            background: linear-gradient(180deg, var(--rose-crimson) 0%, var(--gold-dark) 100%);
+            border-radius: 2px;
+            transition: height 0.3s ease;
+        }
+
+        /* Animasi melantun equalizer semasa lagu dimainkan */
+        .music-player-wrap.playing .eq-bar-1 {
+            animation: eqBounce 0.55s ease-in-out infinite alternate;
+        }
+        .music-player-wrap.playing .eq-bar-2 {
+            animation: eqBounce 0.72s ease-in-out 0.15s infinite alternate;
+        }
+        .music-player-wrap.playing .eq-bar-3 {
+            animation: eqBounce 0.48s ease-in-out 0.28s infinite alternate;
+        }
+        .music-player-wrap.playing .eq-bar-4 {
+            animation: eqBounce 0.62s ease-in-out 0.08s infinite alternate;
+        }
+
+        @keyframes eqBounce {
+            0% { height: 3px; }
+            100% { height: 15px; }
+        }
+
+        /* Maklumat Lagu (Track Info Pill) */
+        .music-info-pill {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+            white-space: nowrap;
+            transition: max-width 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease, margin 0.4s ease;
+            max-width: 140px;
+        }
+
+        .music-label-tag {
+            font-size: 0.52rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 800;
+            color: var(--gold-dark);
+            line-height: 1.1;
+        }
+
+        .music-song-name {
+            font-size: 0.73rem;
+            font-weight: 700;
+            color: var(--rose-deep);
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            line-height: 1.25;
+        }
+
+        /* Butang Vinyl Disc Action */
+        .music-disc-action {
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
+            background: linear-gradient(135deg, #2b040a 0%, #681026 100%);
+            color: #ffffff;
+            border: 1.5px solid rgba(204, 165, 90, 0.75);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--rose-crimson);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
-            z-index: 1001;
+            font-size: 0.95rem;
             cursor: pointer;
-            border: 1.5px solid rgba(203, 162, 88, 0.4);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: none;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+            flex-shrink: 0;
+            transition: transform 0.25s ease, background 0.3s ease;
+            padding: 0;
+            outline: none;
         }
 
-        .music-toggle-btn:hover {
+        .music-disc-action:hover {
             transform: scale(1.08);
         }
 
-        .music-toggle-btn.playing i {
+        .music-player-wrap.playing .disc-spin-icon {
             animation: spinDisc 3.5s linear infinite;
+            color: #fce2a6;
         }
 
         @keyframes spinDisc {
@@ -525,41 +343,137 @@
             }
         }
 
-        /* Floating Petals Toggle */
+        /* Compact Mode (Auto-tuck away selepas beberapa saat skrol) */
+        .music-player-wrap.is-compact {
+            max-width: 76px;
+            padding: 3px 4px 3px 10px;
+            gap: 7px;
+        }
+
+        .music-player-wrap.is-compact .music-info-pill {
+            max-width: 0;
+            opacity: 0;
+            margin: 0;
+            pointer-events: none;
+        }
+
+        /* Kembang semula bila di-hover atau di-tap */
+        .music-player-wrap.is-compact:hover,
+        .music-player-wrap.is-expanded {
+            max-width: 235px;
+            padding: 3px 4px 3px 12px;
+            gap: 9px;
+        }
+
+        .music-player-wrap.is-compact:hover .music-info-pill,
+        .music-player-wrap.is-expanded .music-info-pill {
+            max-width: 140px;
+            opacity: 1;
+        }
+
+        /* Floating Petals Toggle (Responsive pinned to card container) */
         .petals-toggle-btn {
             position: fixed;
             top: 22px;
-            left: 22px;
+            left: max(16px, calc(50% - 240px + 16px));
             background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(8px);
-            width: 46px;
-            height: 46px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--rose-ruby);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.22);
             z-index: 1001;
             cursor: pointer;
             border: 1.5px solid rgba(203, 162, 88, 0.4);
             transition: all 0.3s;
             display: none;
+            box-sizing: border-box;
+        }
+
+        .petals-toggle-btn:hover {
+            transform: scale(1.08);
+        }
+
+        /* ========================================================
+           ITEM #5: SMOOTH SCROLL REVEAL ANIMATIONS
+           ======================================================== */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal-on-scroll.is-revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.93) translateY(22px);
+            transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal-scale.is-revealed {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+
+        .reveal-fade {
+            opacity: 0;
+            transition: opacity 0.9s ease;
+            will-change: opacity;
+        }
+
+        .reveal-fade.is-revealed {
+            opacity: 1;
+        }
+
+        /* Stagger Delays */
+        .delay-1 { transition-delay: 0.1s !important; }
+        .delay-2 { transition-delay: 0.2s !important; }
+        .delay-3 { transition-delay: 0.3s !important; }
+        .delay-4 { transition-delay: 0.4s !important; }
+        .delay-5 { transition-delay: 0.5s !important; }
+
+        /* Pastikan efek hover kad kekal responsif selepas reveal */
+        .luxury-card.reveal-on-scroll.is-revealed:hover,
+        .luxury-card.reveal-scale.is-revealed:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 40px rgba(186, 35, 72, 0.12);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal-on-scroll,
+            .reveal-scale,
+            .reveal-fade {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+            }
         }
 
         /* Hero Section */
         .hero-section {
             position: relative;
-            min-height: 92vh;
+            min-height: 100vh;
+            min-height: 100dvh;
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
+            justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 80px 25px 50px 25px;
-            background: linear-gradient(180deg, rgba(20, 5, 10, 0.3) 0%, rgba(85, 16, 35, 0.42) 50%, rgba(255, 255, 255, 0.95) 94%, #ffffff 100%),
+            padding: 60px 20px 90px 20px;
+            background: linear-gradient(180deg, rgba(20, 5, 10, 0.28) 0%, rgba(85, 16, 35, 0.40) 50%, rgba(255, 255, 255, 0.94) 94%, #ffffff 100%),
                 url('venue-mdiva.jpg') center center / cover no-repeat;
             overflow: hidden;
+            box-sizing: border-box;
         }
 
         .hero-rose-badge {
@@ -573,27 +487,27 @@
             border: 1.5px solid rgba(230, 89, 123, 0.35);
             color: #ba2348;
             font-size: 0.76rem;
-            letter-spacing: 4px;
+            letter-spacing: 3.5px;
             text-transform: uppercase;
             font-weight: 700;
-            margin-bottom: 22px;
+            margin-bottom: 16px;
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
         }
 
         .hero-title-main {
-            font-size: 3.8rem;
-            line-height: 1.1;
+            font-size: 3.5rem;
+            line-height: 1.05;
             color: #ffffff;
             text-shadow: 0 3px 20px rgba(0, 0, 0, 0.85), 0 2px 6px rgba(77, 10, 27, 0.9);
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
         .hero-title-main .ampersand {
             display: block;
             font-family: 'Great Vibes', cursive;
-            font-size: 3rem;
+            font-size: 2.7rem;
             color: var(--gold-light);
-            margin: -10px 0;
+            margin: -8px 0;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
         }
 
@@ -602,10 +516,10 @@
             backdrop-filter: blur(10px);
             color: #640c21;
             border: 1.5px solid var(--gold-primary);
-            padding: 10px 26px;
+            padding: 8px 22px;
             border-radius: 25px;
-            font-size: 0.92rem;
-            letter-spacing: 2px;
+            font-size: 0.88rem;
+            letter-spacing: 1.5px;
             font-weight: 700;
             display: inline-flex;
             align-items: center;
@@ -616,15 +530,66 @@
 
         .hero-venue-sub {
             color: #3b141d;
-            font-size: 0.88rem;
+            font-size: 0.86rem;
             font-weight: 600;
-            letter-spacing: 1px;
+            letter-spacing: 0.8px;
+            margin: 0;
+            max-width: 90%;
+            line-height: 1.4;
+        }
+
+        .hero-scroll-indicator {
+            position: absolute;
+            bottom: 82px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            color: var(--rose-deep);
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+            opacity: 0.75;
+            animation: bounceScroll 2.2s infinite ease-in-out;
+            pointer-events: none;
+        }
+
+        @keyframes bounceScroll {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(7px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(3px);
+            }
         }
 
         /* Generic Section Styles */
         section {
             padding: 48px 24px;
             position: relative;
+        }
+
+        #mempelai {
+            padding: 48px 24px;
+        }
+
+        #mempelai .section-header {
+            margin-bottom: 28px;
+        }
+
+        #mempelai .section-title {
+            font-size: 2.1rem;
+            padding-bottom: 8px;
+        }
+
+        #mempelai .section-desc {
+            margin-bottom: 24px;
         }
 
         .section-header {
@@ -1475,66 +1440,45 @@
 
     <!-- Canvas Kelopak Bunga Mawar Merah Gugur -->
     <canvas id="petals-canvas"></canvas>
+    <!-- Canvas Letupan Confetti & Kelopak Mawar Emas (Item #3) -->
+    <canvas id="celebration-canvas"></canvas>
 
     <!-- Muzik Latar Belakang (lagu.mp3) -->
     <audio id="bg-music" loop preload="auto">
         <source src="lagu.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Sampul / Envelope Pembuka Interaktif -->
+    <!-- Sampul / Envelope Pembuka Interaktif (Original Artwork) -->
     <div id="envelope-overlay">
-        <div class="env-card-frame">
-            <div class="env-card-inner">
-                <!-- Tag Walimatul Urus -->
-                <div class="env-tag-badge">
-                    <span class="env-tag-rose">🤍</span>
-                    <span class="env-tag-text">Walimatul Urus</span>
-                    <span class="env-tag-rose">🌸</span>
-                </div>
-
-                <!-- Animated Bismillah Khat Emblem -->
-                <div class="couple-emblem-wrap">
-                    <div class="couple-emblem-halo"></div>
-                    <img src="bismillah-logo.png" alt="Seni Khat Bismillah" class="couple-emblem-img">
-                </div>
-
-                <!-- Names (Animated Aesthetic & Ruby Rose) -->
-                <div class="env-names-wrap">
-                    <h1 class="env-couple-title">
-                        <span class="env-name">Tysha</span>
-                        <span class="env-amp">&amp;</span>
-                        <span class="env-name">Shaukie</span>
-                    </h1>
-                </div>
-
-                <!-- Delicate Hairline Divider -->
-                <div class="env-divider">
-                    <span class="env-divider-line"></span>
-                    <span class="env-divider-sparkle">✦</span>
-                    <span class="env-divider-line"></span>
-                </div>
-
-                <!-- Date & Venue Box (Sangat Jelas & Mudah Dibaca) -->
-                <div class="env-details-box">
-                    <p class="env-date"><i class="far fa-calendar-alt"></i> Sabtu, 26 Disember 2026</p>
-                    <p class="env-venue"><i class="fas fa-map-marker-alt"></i> M Diva Glass House By Diva• Kulai, Johor
-                    </p>
-                </div>
-            </div>
+        <div class="env-cover-card" onclick="bukaKad()">
+            <img src="kad-jemputan-cover-tall.jpg" alt="Kad Jemputan Walimatul Urus Tysha &amp; Shaukie" class="env-cover-img">
+            <button class="btn-open-card-hotspot" onclick="bukaKad()" aria-label="Buka Kad Jemputan"></button>
         </div>
-
-        <button class="btn-open-card" onclick="bukaKad()">
-            <span>Buka Kad Jemputan</span>
-            <i class="fa-solid fa-envelope-open-text"></i>
-        </button>
     </div>
 
     <!-- Container Utama -->
     <div class="app-container" id="main-app">
 
-        <!-- Butang Floating Kawalan Muzik & Kelopak Bunga -->
-        <div class="music-toggle-btn" id="music-btn" onclick="toggleMuzik()" title="Kawalan Muzik">
-            <i class="fas fa-music"></i>
+        <!-- Butang Floating Kawalan Muzik (Item #6: Mini Music Bar) -->
+        <div class="music-player-wrap" id="music-player-wrap" onclick="handleMusicPlayerClick(event)" title="Kawalan Muzik Latar">
+            <!-- Animated Equalizer Bars -->
+            <div class="music-eq-bars" id="music-eq-bars" aria-hidden="true">
+                <span class="eq-bar eq-bar-1"></span>
+                <span class="eq-bar eq-bar-2"></span>
+                <span class="eq-bar eq-bar-3"></span>
+                <span class="eq-bar eq-bar-4"></span>
+            </div>
+
+            <!-- Song Info Pill -->
+            <div class="music-info-pill">
+                <span class="music-label-tag">LAGU LATAR</span>
+                <span class="music-song-name">Walimatul Urus T&amp;S</span>
+            </div>
+
+            <!-- Vinyl Disc Button -->
+            <button class="music-disc-action" id="music-disc-btn" onclick="handleDiscBtnClick(event)" aria-label="Main atau Jeda Muzik">
+                <i class="fas fa-compact-disc disc-spin-icon" id="music-disc-icon"></i>
+            </button>
         </div>
 
         <div class="petals-toggle-btn" id="petals-btn" onclick="togglePetals()" title="Kelopak Mawar Gugur">
@@ -1543,41 +1487,46 @@
 
         <!-- 1. HERO SECTION -->
         <section id="utama" class="hero-section">
-            <div class="hero-rose-badge">
+            <div class="hero-rose-badge reveal-on-scroll delay-1">
                 <i class="fas fa-heart" style="font-size: 0.65rem; color: #e6597b;"></i> Walimatul Urus <i
                     class="fas fa-heart" style="font-size: 0.65rem; color: #e6597b;"></i>
             </div>
 
-            <h1 class="serif-font hero-title-main">
+            <h1 class="serif-font hero-title-main reveal-on-scroll delay-2">
                 Tysha
                 <span class="ampersand">&</span>
                 Shaukie
             </h1>
 
-            <div class="hero-date-pill">
+            <div class="hero-date-pill reveal-on-scroll delay-3">
                 <i class="far fa-calendar-check" style="color: var(--gold-dark);"></i>
                 Sabtu, 26 Disember 2026
             </div>
 
-            <p class="hero-venue-sub">
+            <p class="hero-venue-sub reveal-on-scroll delay-4">
                 <i class="fas fa-map-pin" style="color: var(--rose-ruby); margin-right: 4px;"></i>
                 M Diva Glass House By Diva, Kulai, Johor
             </p>
+
+            <div class="hero-scroll-indicator reveal-fade delay-5">
+                <span>Skrol Ke Bawah</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
         </section>
 
         <!-- 2. TUAN RUMAH & PASANGAN MEMPELAI -->
         <section id="mempelai">
-            <div class="section-header">
+            <div class="section-header reveal-on-scroll">
                 <span class="section-subtitle">Bersama Menjemput</span>
                 <h2 class="serif-font section-title">Jemputan Raja Sehari</h2>
             </div>
 
-            <p class="section-desc" style="margin-bottom: 25px;">
+            <p class="section-desc reveal-on-scroll delay-1" style="margin-bottom: 25px;">
                 Dengan penuh kesyukuran ke hadrat Ilahi, kami mempersilakan Dato' / Datin / Tuan / Puan / Encik / Cik
                 sekeluarga ke majlis perkahwinan puteri kami.
             </p>
 
-            <div class="luxury-card family-card">
+            <div class="luxury-card family-card reveal-scale">
                 <div class="family-role">Ibu Bapa Pengantin Perempuan</div>
                 <h3 class="serif-font family-name">Mohd Shair Bin Samad</h3>
                 <div class="script-font" style="font-size: 1.8rem; color: var(--gold-dark); margin: -4px 0;">&</div>
@@ -1590,7 +1539,7 @@
             </div>
 
             <!-- Potret Mempelai -->
-            <div class="luxury-card" style="text-align: center;">
+            <div class="luxury-card reveal-scale delay-1" style="text-align: center;">
                 <span class="section-subtitle">Mempelai Yang Diraikan</span>
                 <img src="pasangan-rose.jpg" alt="Tysha & Shaukie" class="couple-featured-img">
 
@@ -1609,14 +1558,14 @@
 
         <!-- 5. ATUR CARA / TENTATIF MAJLIS -->
         <section id="tentatif">
-            <div class="section-header">
+            <div class="section-header reveal-on-scroll">
                 <span class="section-subtitle">Jadual Program</span>
                 <h2 class="serif-font section-title">Atur Cara Majlis</h2>
             </div>
 
-            <div class="luxury-card">
+            <div class="luxury-card reveal-on-scroll">
                 <div class="timeline-container">
-                    <div class="timeline-item">
+                    <div class="timeline-item reveal-on-scroll delay-1">
                         <div class="timeline-dot"></div>
                         <span class="timeline-time"><i class="far fa-clock"></i> 11:00 PAGI</span>
                         <h4 class="timeline-title">Ketibaan Para Tetamu & Jamuan Makan</h4>
@@ -1624,7 +1573,7 @@
                             para tetamu jemputan.</p>
                     </div>
 
-                    <div class="timeline-item">
+                    <div class="timeline-item reveal-on-scroll delay-2">
                         <div class="timeline-dot"></div>
                         <span class="timeline-time"><i class="far fa-clock"></i> 12:30 TENGAH HARI</span>
                         <h4 class="timeline-title">Ketibaan Mempelai & Perarakan Masuk</h4>
@@ -1632,7 +1581,7 @@
                             kesyukuran.</p>
                     </div>
 
-                    <div class="timeline-item">
+                    <div class="timeline-item reveal-on-scroll delay-3">
                         <div class="timeline-dot"></div>
                         <span class="timeline-time"><i class="far fa-clock"></i> 01:00 PETANG</span>
                         <h4 class="timeline-title">Makan Beradab & Memotong Kek</h4>
@@ -1640,7 +1589,7 @@
                             memotong kek perkahwinan.</p>
                     </div>
 
-                    <div class="timeline-item">
+                    <div class="timeline-item reveal-on-scroll delay-4">
                         <div class="timeline-dot"></div>
                         <span class="timeline-time"><i class="far fa-clock"></i> 01:30 PETANG</span>
                         <h4 class="timeline-title">Sesi Fotografi & Ramah Mesra</h4>
@@ -1648,7 +1597,7 @@
                             sahabat handai.</p>
                     </div>
 
-                    <div class="timeline-item">
+                    <div class="timeline-item reveal-on-scroll delay-5">
                         <div class="timeline-dot"></div>
                         <span class="timeline-time"><i class="far fa-clock"></i> 04:00 PETANG</span>
                         <h4 class="timeline-title">Majlis Bersurai</h4>
@@ -1661,12 +1610,12 @@
 
         <!-- 6. LOKASI & NAVIGASI -->
         <section id="lokasi">
-            <div class="section-header">
+            <div class="section-header reveal-on-scroll">
                 <span class="section-subtitle">Panduan Arah</span>
                 <h2 class="serif-font section-title">Lokasi Majlis</h2>
             </div>
 
-            <div class="luxury-card" style="text-align: center;">
+            <div class="luxury-card reveal-scale" style="text-align: center;">
                 <div style="margin-bottom: 18px; border-radius: 18px; overflow: hidden; border: 2px solid var(--gold-light); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); cursor: pointer;"
                     onclick="openLightbox('venue-mdiva.jpg', 'M Diva Glass House By Diva')">
                     <img src="venue-mdiva.jpg" alt="M Diva Glass House By Diva"
@@ -1709,13 +1658,13 @@
 
         <!-- 7. GALERI KENANGAN -->
         <section id="galeri">
-            <div class="section-header">
+            <div class="section-header reveal-on-scroll">
                 <span class="section-subtitle">Potret Kenangan</span>
                 <h2 class="serif-font section-title">Galeri Memori</h2>
             </div>
 
             <div class="gallery-grid">
-                <div class="gallery-item span-2"
+                <div class="gallery-item span-2 reveal-scale delay-1"
                     onclick="openLightbox('venue-mdiva.jpg', 'Dewan M Diva Glass House By Diva')">
                     <img src="venue-mdiva.jpg" alt="Dewan M Diva Glass House By Diva">
                     <div class="gallery-overlay-badge">
@@ -1723,12 +1672,12 @@
                     </div>
                 </div>
 
-                <div class="gallery-item" onclick="openLightbox('pasangan-rose.jpg', 'Mempelai Tysha & Shaukie')">
+                <div class="gallery-item reveal-scale delay-2" onclick="openLightbox('pasangan-rose.jpg', 'Mempelai Tysha & Shaukie')">
                     <img src="pasangan-rose.jpg" alt="Tysha & Shaukie">
                     <div class="gallery-overlay-badge"><i class="fas fa-search-plus"></i></div>
                 </div>
 
-                <div class="gallery-item" onclick="openLightbox('pelamin-rose.jpg', 'Pelamin Rose Merah & Emas')">
+                <div class="gallery-item reveal-scale delay-3" onclick="openLightbox('pelamin-rose.jpg', 'Pelamin Rose Merah & Emas')">
                     <img src="pelamin-rose.jpg" alt="Pelamin Rose Merah">
                     <div class="gallery-overlay-badge"><i class="fas fa-search-plus"></i></div>
                 </div>
@@ -1737,12 +1686,12 @@
 
         <!-- COUNTDOWN TIMER (Menghitung Hari Bahagia) -->
         <section id="countdown-sec">
-            <div class="luxury-card" style="text-align: center;">
+            <div class="luxury-card reveal-scale" style="text-align: center;">
                 <span class="section-subtitle">Menghitung Hari Bahagia</span>
                 <h3 class="serif-font" style="font-size: 1.5rem; color: var(--rose-deep); margin-bottom: 5px;">Menanti
                     Detik Ijab & Qabul</h3>
 
-                <div class="countdown-wrap">
+                <div class="countdown-wrap reveal-scale delay-1">
                     <div class="count-card">
                         <div class="count-num" id="cd-days">00</div>
                         <div class="count-label">Hari</div>
@@ -1761,7 +1710,7 @@
                     </div>
                 </div>
 
-                <div class="cal-actions-grid">
+                <div class="cal-actions-grid reveal-on-scroll delay-2">
                     <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Walimatul+Urus+Tysha+%26+Shaukie&dates=20261226T030000Z/20261226T080000Z&details=Majlis+Perkahwinan+Tysha+%26+Shaukie+bertempat+di+M+Diva+Glass+House+By+Diva,+Lot+12,+Jalan+Kulai-Kota+Tinggi,+81000+Kulai,+Johor.+Masa:+11:00+Pagi+-+4:00+Petang.&location=M+Diva+Glass+House+By+Diva,+Lot+12,+Jalan+Kulai-Kota+Tinggi,+81000+Kulai,+Johor"
                         target="_blank" class="cal-btn">
                         <i class="fab fa-google"></i> Google Calendar
@@ -1776,17 +1725,17 @@
 
         <!-- 8. BORANG PENGESAHAN KEHADIRAN (RSVP) -->
         <section id="rsvp">
-            <div class="section-header">
+            <div class="section-header reveal-on-scroll">
                 <span class="section-subtitle">Pengesahan Tetamu</span>
                 <h2 class="serif-font section-title">Borang RSVP</h2>
             </div>
 
-            <p class="section-desc" style="margin-bottom: 20px;">
+            <p class="section-desc reveal-on-scroll delay-1" style="margin-bottom: 20px;">
                 Sila sahkan kehadiran anda selewat-lewatnya pada <strong>1 Disember 2026</strong> bagi memudahkan urusan
                 penyediaan hidangan & tempat.
             </p>
 
-            <div class="luxury-card">
+            <div class="luxury-card reveal-scale">
                 <form id="form-rsvp" onsubmit="hantarRSVP(event)">
                     <div class="form-group">
                         <label class="form-label" for="rsvp-nama">Nama Penuh Tetamu</label>
@@ -1852,12 +1801,12 @@
 
         <!-- 9. BUKU UCAPAN DIGITAL (GUESTBOOK) -->
         <section id="ucapan">
-            <div class="section-header">
+            <div class="section-header reveal-on-scroll">
                 <span class="section-subtitle">Titipan Doa</span>
                 <h2 class="serif-font section-title">Buku Ucapan</h2>
             </div>
 
-            <div class="luxury-card">
+            <div class="luxury-card reveal-scale">
                 <form id="form-ucapan-langsung" onsubmit="tambahUcapanWeb(event)">
                     <div class="form-group">
                         <label class="form-label" for="nama-ucapan">Nama Anda</label>
@@ -1882,12 +1831,12 @@
 
         <!-- 10. SALAM KAUT DIGITAL / HADIAH -->
         <section id="hadiah">
-            <div class="section-header">
+            <div class="section-header reveal-on-scroll">
                 <span class="section-subtitle">Tanda Ingatan</span>
                 <h2 class="serif-font section-title">Hadiah</h2>
             </div>
 
-            <div class="luxury-card" style="text-align: center;">
+            <div class="luxury-card reveal-scale" style="text-align: center;">
                 <i class="fas fa-gift" style="font-size: 2.2rem; color: var(--rose-ruby); margin-bottom: 12px;"></i>
                 <h3 class="serif-font" style="font-size: 1.45rem; color: var(--rose-deep); margin-bottom: 6px;">Salam
                     Kaut Digital</h3>
@@ -1895,7 +1844,7 @@
                     Buat para tetamu yang berhasrat menghulurkan sumbangan ingatan ikhlas buat pengantin baru:
                 </p>
 
-                <div class="bank-box">
+                <div class="bank-box reveal-scale delay-1">
                     <span class="bank-badge" style="background: #e61b24; color: #ffffff;">CIMB BANK</span>
                     <div class="acc-number" id="acc-num-1">7650024860</div>
                     <div class="acc-name">NUR TYSHA ATIKAH BINTI MOHD SHAIR</div>
@@ -1910,7 +1859,7 @@
                         style="font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-dark); font-weight: 700;">
                         DuitNow QR
                     </span>
-                    <div style="margin: 15px auto; max-width: 270px; text-align: center;">
+                    <div class="reveal-scale delay-2" style="margin: 15px auto; max-width: 270px; text-align: center;">
                         <img src="duitnow-qr.png" alt="DuitNow QR CIMB - Nur Tysha Atikah"
                             style="width: 100%; border-radius: 18px; border: 2px solid var(--gold-primary); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12); cursor: pointer; transition: transform 0.3s;"
                             onclick="openLightbox('duitnow-qr.png', 'DuitNow QR - Nur Tysha Atikah')">
@@ -1925,15 +1874,15 @@
 
         <!-- 11. HUBUNGI WAKIL KELUARGA -->
         <section id="hubungi" style="padding-bottom: 20px;">
-            <div class="section-header">
+            <div class="section-header reveal-on-scroll">
                 <span class="section-subtitle">Ada Pertanyaan?</span>
                 <h2 class="serif-font section-title">Hubungi Kami</h2>
             </div>
 
-            <div class="luxury-card">
+            <div class="luxury-card reveal-scale">
                 <div class="contact-grid">
                     <!-- En. Shair (Bapa) -->
-                    <div class="contact-card-item">
+                    <div class="contact-card-item reveal-on-scroll delay-1">
                         <div class="contact-info-left">
                             <div class="contact-name">Encik Shair</div>
                             <div class="contact-role">Bapa Pengantin Perempuan</div>
@@ -1951,7 +1900,7 @@
                     </div>
 
                     <!-- En. Akif (Abang) -->
-                    <div class="contact-card-item">
+                    <div class="contact-card-item reveal-on-scroll delay-2">
                         <div class="contact-info-left">
                             <div class="contact-name">Encik Akif</div>
                             <div class="contact-role">Abang Pengantin Perempuan</div>
@@ -1969,7 +1918,7 @@
                     </div>
 
                     <!-- Cik Dania (Adik) -->
-                    <div class="contact-card-item">
+                    <div class="contact-card-item reveal-on-scroll delay-3">
                         <div class="contact-info-left">
                             <div class="contact-name">Cik Dania</div>
                             <div class="contact-role">Adik Pengantin Perempuan</div>
@@ -1991,7 +1940,7 @@
 
         <!-- AYAT SUCI & DOA -->
         <section id="doa" style="padding-top: 15px; padding-bottom: 25px;">
-            <div class="quran-box">
+            <div class="quran-box reveal-scale">
                 <div class="arabic-font bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
                 <div class="arabic-font arabic-text">
                     وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ
@@ -2008,7 +1957,7 @@
         </section>
 
         <!-- FOOTER -->
-        <div class="footer-wrap">
+        <div class="footer-wrap reveal-on-scroll">
             <div class="script-font" style="font-size: 2.2rem; color: var(--rose-ruby); margin-bottom: 5px;">Tysha &
                 Shaukie</div>
             <p>Walimatul Urus • 26 Disember 2026 • M Diva Glass House By Diva, Kulai Johor</p>
@@ -2139,11 +2088,320 @@
             }
         }
 
-        // 2. KAWALAN AUDIO & BUKA SAMPUL
-        const muzik = document.getElementById('bg-music');
-        const btnMuzik = document.getElementById('music-btn');
-        let muzikMain = false;
+        // ========================================================
+        // ITEM #3: LETUPAN KELOPAK & CONFETTI MAWAR EMAS (CELEBRATION BURST)
+        // ========================================================
+        const celebCanvas = document.getElementById('celebration-canvas');
+        const celebCtx = celebCanvas ? celebCanvas.getContext('2d') : null;
+        let celebParticles = [];
+        let celebAnimFrame = null;
 
+        function resizeCelebCanvas() {
+            if (!celebCanvas) return;
+            celebCanvas.width = window.innerWidth;
+            celebCanvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCelebCanvas);
+        resizeCelebCanvas();
+
+        class CelebParticle {
+            constructor(originX, originY, mode = 'grand') {
+                this.x = originX;
+                this.y = originY;
+                this.mode = mode;
+
+                const rand = Math.random();
+                if (mode === 'love') {
+                    this.type = rand < 0.58 ? 'heart' : (rand < 0.85 ? 'sparkle' : 'petal');
+                } else {
+                    this.type = rand < 0.42 ? 'petal' : (rand < 0.76 ? 'gold' : (rand < 0.90 ? 'heart' : 'sparkle'));
+                }
+
+                if (mode === 'love') {
+                    const angle = Math.random() * Math.PI * 2;
+                    const speed = Math.random() * 6.5 + 2.5;
+                    this.vx = Math.cos(angle) * speed;
+                    this.vy = Math.sin(angle) * speed - 2.8;
+                    this.gravity = 0.22;
+                    this.drag = 0.96;
+                    this.decay = Math.random() * 0.018 + 0.014;
+                    this.size = Math.random() * 8 + 8;
+                } else if (mode === 'gentle') {
+                    this.vx = (Math.random() - 0.5) * 8;
+                    this.vy = -(Math.random() * 8 + 5);
+                    this.gravity = 0.25;
+                    this.drag = 0.98;
+                    this.decay = Math.random() * 0.01 + 0.008;
+                    this.size = Math.random() * 9 + 8;
+                } else {
+                    // 'grand' mode: celebratory upward fountain arch
+                    this.vx = (Math.random() - 0.5) * 16;
+                    this.vy = -(Math.random() * 14 + 11);
+                    this.gravity = 0.36;
+                    this.drag = 0.982;
+                    this.decay = Math.random() * 0.009 + 0.007;
+                    this.size = Math.random() * 10 + 9;
+                }
+
+                this.angle = Math.random() * Math.PI * 2;
+                this.rotSpeed = (Math.random() - 0.5) * 0.12;
+                this.wobble = Math.random() * Math.PI * 2;
+                this.wobbleSpeed = Math.random() * 0.1 + 0.06;
+                this.alpha = 1.0;
+
+                // Skema warna mewah
+                if (this.type === 'petal') {
+                    const petalColors = ['#ba2348', '#e7567a', '#f8bac8', '#ffffff', '#80122e', '#fce2e8'];
+                    this.color = petalColors[Math.floor(Math.random() * petalColors.length)];
+                } else if (this.type === 'gold') {
+                    const goldColors = ['#cca55a', '#f7d58a', '#e5c158', '#ffd700', '#fff2b2'];
+                    this.color = goldColors[Math.floor(Math.random() * goldColors.length)];
+                } else if (this.type === 'heart') {
+                    const heartColors = ['#e6597b', '#d81b60', '#ba2348', '#ff4081', '#cca55a'];
+                    this.color = heartColors[Math.floor(Math.random() * heartColors.length)];
+                } else {
+                    // sparkle
+                    this.color = '#fff6cc';
+                }
+            }
+
+            update() {
+                this.vx *= this.drag;
+                this.vy = (this.vy + this.gravity) * this.drag;
+                this.x += this.vx + Math.sin(this.wobble) * 1.1;
+                this.y += this.vy;
+                this.angle += this.rotSpeed;
+                this.wobble += this.wobbleSpeed;
+                this.alpha -= this.decay;
+            }
+
+            draw(c) {
+                if (this.alpha <= 0) return;
+                c.save();
+                c.translate(this.x, this.y);
+                c.rotate(this.angle);
+                c.globalAlpha = Math.max(0, this.alpha);
+
+                const scaleX = Math.cos(this.wobble);
+                c.scale(scaleX, 1);
+
+                if (this.type === 'petal') {
+                    c.fillStyle = this.color;
+                    c.beginPath();
+                    c.moveTo(0, -this.size * 0.7);
+                    c.bezierCurveTo(this.size * 0.7, -this.size * 0.5, this.size * 0.7, this.size * 0.5, 0, this.size * 0.7);
+                    c.bezierCurveTo(-this.size * 0.7, this.size * 0.5, -this.size * 0.7, -this.size * 0.5, 0, -this.size * 0.7);
+                    c.fill();
+                    if (this.color === '#ffffff') {
+                        c.strokeStyle = 'rgba(231, 86, 122, 0.45)';
+                        c.lineWidth = 0.8;
+                        c.stroke();
+                    }
+                } else if (this.type === 'heart') {
+                    c.fillStyle = this.color;
+                    c.beginPath();
+                    const h = this.size * 0.45;
+                    c.moveTo(0, h * 0.3);
+                    c.bezierCurveTo(-h * 1.1, -h * 0.9, -h * 1.6, h * 0.6, 0, h * 1.6);
+                    c.bezierCurveTo(h * 1.6, h * 0.6, h * 1.1, -h * 0.9, 0, h * 0.3);
+                    c.fill();
+                } else if (this.type === 'gold') {
+                    c.fillStyle = this.color;
+                    c.fillRect(-this.size * 0.45, -this.size * 0.28, this.size * 0.9, this.size * 0.56);
+                    c.strokeStyle = 'rgba(255, 255, 255, 0.6)';
+                    c.lineWidth = 0.6;
+                    c.strokeRect(-this.size * 0.45, -this.size * 0.28, this.size * 0.9, this.size * 0.56);
+                } else {
+                    // sparkle star
+                    c.fillStyle = this.color;
+                    c.beginPath();
+                    const s = this.size * 0.5;
+                    c.moveTo(0, -s);
+                    c.lineTo(s * 0.28, -s * 0.28);
+                    c.lineTo(s, 0);
+                    c.lineTo(s * 0.28, s * 0.28);
+                    c.lineTo(0, s);
+                    c.lineTo(-s * 0.28, s * 0.28);
+                    c.lineTo(-s, 0);
+                    c.lineTo(-s * 0.28, -s * 0.28);
+                    c.closePath();
+                    c.fill();
+                }
+
+                c.restore();
+            }
+        }
+
+        function triggerCelebrationBurst(originX, originY, count = 70, mode = 'grand') {
+            if (!celebCanvas || !celebCtx) return;
+            const x = originX !== undefined ? originX : window.innerWidth / 2;
+            const y = originY !== undefined ? originY : window.innerHeight * 0.65;
+
+            // Meriam kembar kiri-kanan untuk mod grand
+            if (mode === 'grand') {
+                const spreadX = Math.min(100, window.innerWidth * 0.2);
+                for (let i = 0; i < count; i++) {
+                    const spawnX = i % 2 === 0 ? x - spreadX : x + spreadX;
+                    celebParticles.push(new CelebParticle(spawnX, y, 'grand'));
+                }
+            } else {
+                for (let i = 0; i < count; i++) {
+                    celebParticles.push(new CelebParticle(x, y, mode));
+                }
+            }
+
+            if (!celebAnimFrame) {
+                celebAnimFrame = requestAnimationFrame(animateCelebration);
+            }
+        }
+
+        function animateCelebration() {
+            if (!celebCtx) return;
+            celebCtx.clearRect(0, 0, celebCanvas.width, celebCanvas.height);
+
+            for (let i = celebParticles.length - 1; i >= 0; i--) {
+                const p = celebParticles[i];
+                p.update();
+                p.draw(celebCtx);
+
+                if (p.alpha <= 0 || p.y > window.innerHeight + 60) {
+                    celebParticles.splice(i, 1);
+                }
+            }
+
+            if (celebParticles.length > 0) {
+                celebAnimFrame = requestAnimationFrame(animateCelebration);
+            } else {
+                celebCtx.clearRect(0, 0, celebCanvas.width, celebCanvas.height);
+                cancelAnimationFrame(celebAnimFrame);
+                celebAnimFrame = null;
+            }
+        }
+
+        // ========================================================
+        // ITEM #6: KAWALAN AUDIO & MINI MUSIC PLAYER
+        // ========================================================
+        const muzik = document.getElementById('bg-music');
+        const playerWrap = document.getElementById('music-player-wrap');
+        const discBtn = document.getElementById('music-disc-btn');
+        const discIcon = document.getElementById('music-disc-icon');
+        const btnMuzik = playerWrap; // Alias untuk keserasian
+        let muzikMain = false;
+        let compactTimer = null;
+
+        function startCompactTimer() {
+            clearTimeout(compactTimer);
+            compactTimer = setTimeout(() => {
+                if (playerWrap && !playerWrap.matches(':hover')) {
+                    playerWrap.classList.add('is-compact');
+                    playerWrap.classList.remove('is-expanded');
+                }
+            }, 6000);
+        }
+
+        function setMusicPlayingUI(isPlaying) {
+            if (!playerWrap) return;
+            if (isPlaying) {
+                playerWrap.classList.add('playing');
+                playerWrap.classList.remove('paused');
+                if (discIcon) {
+                    discIcon.className = 'fas fa-compact-disc disc-spin-icon';
+                }
+            } else {
+                playerWrap.classList.remove('playing');
+                playerWrap.classList.add('paused');
+                if (discIcon) {
+                    discIcon.className = 'fas fa-play disc-spin-icon';
+                }
+            }
+        }
+
+        function toggleMuzik() {
+            if (muzikMain) {
+                muzik.pause();
+                muzikMain = false;
+                setMusicPlayingUI(false);
+                showToast('Muzik dihentikan');
+            } else {
+                muzik.play().then(() => {
+                    muzikMain = true;
+                    setMusicPlayingUI(true);
+                    startCompactTimer();
+                    showToast('Muzik dimainkan');
+                }).catch(e => {
+                    console.log("Ralat audio:", e);
+                });
+            }
+        }
+
+        function handleMusicPlayerClick(event) {
+            // Jika dalam mod compact, kembangkan semula bila disentuh
+            if (playerWrap.classList.contains('is-compact')) {
+                playerWrap.classList.remove('is-compact');
+                playerWrap.classList.add('is-expanded');
+                startCompactTimer();
+                return;
+            }
+            // Jika sudah terbuka dan klik di luar butang disc, toggle lagu
+            toggleMuzik();
+        }
+
+        function handleDiscBtnClick(event) {
+            event.stopPropagation();
+            toggleMuzik();
+            if (!playerWrap.classList.contains('is-compact')) {
+                startCompactTimer();
+            }
+        }
+
+        // Auto-tuck into compact mode bila pengguna mula skrol
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 120 && playerWrap && !playerWrap.classList.contains('is-compact')) {
+                playerWrap.classList.add('is-compact');
+                playerWrap.classList.remove('is-expanded');
+            }
+        }, { passive: true });
+
+        // ========================================================
+        // ITEM #5: SMOOTH SCROLL REVEAL OBSERVER
+        // ========================================================
+        function revealHeroElements() {
+            const heroElements = document.querySelectorAll('#utama .reveal-on-scroll, #utama .reveal-scale, #utama .reveal-fade');
+            heroElements.forEach(el => el.classList.add('is-revealed'));
+        }
+
+        function initScrollReveal() {
+            const revealElements = document.querySelectorAll('.reveal-on-scroll, .reveal-scale, .reveal-fade');
+            if (!revealElements.length) return;
+
+            if (!('IntersectionObserver' in window)) {
+                // Fallback untuk peranti lama
+                revealElements.forEach(el => el.classList.add('is-revealed'));
+                return;
+            }
+
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-revealed');
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, {
+                root: null,
+                rootMargin: '0px 0px -40px 0px',
+                threshold: 0.08
+            });
+
+            revealElements.forEach(el => {
+                // Jangan perhati hero jika sudah di-reveal
+                if (!el.closest('#utama')) {
+                    observer.observe(el);
+                }
+            });
+        }
+
+        // Buka Sampul Kad Interaktif
         function bukaKad() {
             const overlay = document.getElementById('envelope-overlay');
             overlay.style.transform = 'translate(-50%, -100%)';
@@ -2151,41 +2409,47 @@
 
             setTimeout(() => {
                 overlay.style.display = 'none';
-                btnMuzik.style.display = 'flex';
-                document.getElementById('petals-btn').style.display = 'flex';
+                window.scrollTo(0, 0);
+                petalsEnabled = true;
+
+                if (playerWrap) playerWrap.style.display = 'flex';
+                const petalsBtn = document.getElementById('petals-btn');
+                if (petalsBtn) petalsBtn.style.display = 'flex';
+
+                // Animasi masuk hero dan inisialisasi scroll observer
+                revealHeroElements();
+                initScrollReveal();
+
+                // Letupan kelopak mawar emas menyambut tetamu
+                triggerCelebrationBurst(window.innerWidth / 2, window.innerHeight * 0.45, 65, 'grand');
 
                 // Cuba mainkan muzik
                 muzik.play().then(() => {
                     muzikMain = true;
-                    btnMuzik.classList.add('playing');
-                    btnMuzik.innerHTML = '<i class="fas fa-compact-disc"></i>';
+                    setMusicPlayingUI(true);
+                    startCompactTimer();
                 }).catch(err => {
                     console.log("Autoplay dicegah oleh pelayar:", err);
-                    btnMuzik.innerHTML = '<i class="fas fa-music"></i>';
+                    setMusicPlayingUI(false);
                 });
             }, 600);
         }
 
+        // Semak parameter URL ?open=1 untuk paparan terus
         if (new URLSearchParams(window.location.search).get('open') === '1') {
-            document.getElementById('envelope-overlay').style.display = 'none';
-            document.getElementById('music-btn').style.display = 'flex';
-            document.getElementById('petals-btn').style.display = 'flex';
-        }
+            const overlay = document.getElementById('envelope-overlay');
+            if (overlay) overlay.style.display = 'none';
+            petalsEnabled = true;
+            if (playerWrap) playerWrap.style.display = 'flex';
+            const petalsBtn = document.getElementById('petals-btn');
+            if (petalsBtn) petalsBtn.style.display = 'flex';
 
-        function toggleMuzik() {
-            if (muzikMain) {
-                muzik.pause();
-                btnMuzik.classList.remove('playing');
-                btnMuzik.innerHTML = '<i class="fas fa-play"></i>';
-                showToast('Muzik dihentikan');
-            } else {
-                muzik.play().then(() => {
-                    btnMuzik.classList.add('playing');
-                    btnMuzik.innerHTML = '<i class="fas fa-compact-disc"></i>';
-                    showToast('Muzik dimainkan');
-                }).catch(e => console.log(e));
-            }
-            muzikMain = !muzikMain;
+            window.addEventListener('DOMContentLoaded', () => {
+                revealHeroElements();
+                initScrollReveal();
+            });
+            revealHeroElements();
+            initScrollReveal();
         }
 
         // 3. COUNTDOWN TIMER KE 26 DISEMBER 2026 (11:00 AM)
@@ -2375,7 +2639,14 @@
                 btnSubmit.innerHTML = '<i class="fas fa-check"></i> RSVP Berjaya Dihantar';
             }
 
-            showToast('RSVP anda berjaya dihantar!');
+            // Letupan kelopak mawar emas meraikan RSVP tetamu (Item #3)
+            if (kehadiran === "Hadir") {
+                triggerCelebrationBurst(window.innerWidth / 2, window.innerHeight * 0.75, 90, 'grand');
+                showToast('Terima kasih! Kehadiran anda amat dihargai ❤️🎉');
+            } else {
+                triggerCelebrationBurst(window.innerWidth / 2, window.innerHeight * 0.75, 45, 'gentle');
+                showToast('Terima kasih atas maklum balas RSVP anda.');
+            }
         }
 
         // Semak jika sudah pernah RSVP dalam browser
@@ -2503,7 +2774,7 @@
                         <span class="wish-time">${masaDisplay}</span>
                     </div>
                     <p class="wish-body">${item.teks}</p>
-                    <button type="button" class="wish-heart-btn ${isLiked ? 'liked' : ''}" onclick="likeWish(${index})" title="${isLiked ? 'Batal Suka' : 'Suka ucapan ini'}">
+                    <button type="button" class="wish-heart-btn ${isLiked ? 'liked' : ''}" onclick="likeWish(${index}, event)" title="${isLiked ? 'Batal Suka' : 'Suka ucapan ini'}">
                         <i class="${isLiked ? 'fas fa-heart' : 'far fa-heart'}"></i> <span>${item.likes}</span>
                     </button>
                 `;
@@ -2511,7 +2782,7 @@
             });
         }
 
-        function likeWish(index) {
+        function likeWish(index, event) {
             if (!currentWishes || !currentWishes[index]) return;
             const item = currentWishes[index];
             const key = getWishKey(item, index);
@@ -2538,6 +2809,17 @@
                 setLikedWishKeys(likedKeys);
                 likesMap[key] = item.likes;
                 setLocalLikesMap(likesMap);
+
+                // Letupan cinta & kilauan emas mikro tepat pada butang hati (Item #3)
+                let targetX = window.innerWidth / 2;
+                let targetY = window.innerHeight / 2;
+                const targetBtn = event ? event.currentTarget : (document.querySelectorAll('.wish-heart-btn')[index] || null);
+                if (targetBtn) {
+                    const rect = targetBtn.getBoundingClientRect();
+                    targetX = rect.left + rect.width / 2;
+                    targetY = rect.top + rect.height / 2;
+                }
+                triggerCelebrationBurst(targetX, targetY, 32, 'love');
                 showToast('Terima kasih atas tanda suka! ❤️');
             }
 
@@ -2595,7 +2877,10 @@
             simpanKeWishes(nama, teks);
             document.getElementById('nama-ucapan').value = '';
             document.getElementById('teks-ucapan').value = '';
-            showToast('Ucapan anda berjaya dikirim!');
+
+            // Letupan kelopak mawar emas meraikan ucapan tetamu (Item #3)
+            triggerCelebrationBurst(window.innerWidth / 2, window.innerHeight * 0.65, 80, 'grand');
+            showToast('Ucapan anda berjaya dikirim! Terima kasih ❤️');
         }
 
         function simpanKeWishes(nama, teks) {
