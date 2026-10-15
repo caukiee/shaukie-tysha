@@ -18,10 +18,20 @@ Anda **TIDAK PERLU MEMBAYAR APA-APA**. Google Sheets & Google Apps Script adalah
 
 ```javascript
 function doGet(e) {
-  var ss = SpreadsheetApp.getActiveSpreadsheet();
   var action = (e && e.parameter && e.parameter.action) ? e.parameter.action : "get_ucapan";
   
   if (action === "get_ucapan") {
+    // ⚡ SEMAK CACHE PANTAS (~200ms - 300ms): Elakkan buka fail Spreadsheet setiap kali tetamu buka laman web
+    try {
+      var cache = CacheService.getScriptCache();
+      var cached = cache.get("cache_ucapan_data");
+      if (cached) {
+        return ContentService.createTextOutput(cached)
+          .setMimeType(ContentService.MimeType.JSON);
+      }
+    } catch (eCache) { }
+
+    var ss = SpreadsheetApp.getActiveSpreadsheet();
     var sheet = ss.getSheetByName("Ucapan");
     if (!sheet) {
       sheet = ss.insertSheet("Ucapan");
@@ -46,12 +56,20 @@ function doGet(e) {
     }
     // Susun daripada yang terkini ke terdahulu
     list.reverse();
-    return ContentService.createTextOutput(JSON.stringify({ status: "success", data: list }))
+    var outputJson = JSON.stringify({ status: "success", data: list });
+
+    // Simpan dalam cache selama 300 saat (5 minit)
+    try {
+      CacheService.getScriptCache().put("cache_ucapan_data", outputJson, 300);
+    } catch (eCachePut) { }
+
+    return ContentService.createTextOutput(outputJson)
       .setMimeType(ContentService.MimeType.JSON);
   }
 
   // Sokongan kemaskini Like melalui GET
   if (action === "like_ucapan" || action === "like") {
+    var ss = SpreadsheetApp.getActiveSpreadsheet();
     return handleLike(ss, e.parameter);
   }
   
@@ -99,6 +117,8 @@ function doPost(e) {
           new Date().toLocaleDateString("ms-MY"),
           1
         ]);
+        // Kosongkan cache supaya ucapan baru segera kelihatan
+        try { CacheService.getScriptCache().remove("cache_ucapan_data"); } catch (eC) { }
       }
       
       return ContentService.createTextOutput(JSON.stringify({ status: "success", message: "RSVP disimpan" }))
@@ -117,6 +137,9 @@ function doPost(e) {
         new Date().toLocaleDateString("ms-MY"),
         1
       ]);
+      // Kosongkan cache supaya ucapan baru serta-merta terpapar
+      try { CacheService.getScriptCache().remove("cache_ucapan_data"); } catch (eC) { }
+
       return ContentService.createTextOutput(JSON.stringify({ status: "success", message: "Ucapan disimpan" }))
         .setMimeType(ContentService.MimeType.JSON);
     }
@@ -156,6 +179,7 @@ function handleLike(ss, params) {
       var curVal = Number(data[row - 1][3]) || 1;
       var updatedVal = explicitLikes !== null && !isNaN(explicitLikes) ? Math.max(0, explicitLikes) : Math.max(0, curVal + delta);
       sheet.getRange(row, 4).setValue(updatedVal);
+      try { CacheService.getScriptCache().remove("cache_ucapan_data"); } catch (eC) { }
       return ContentService.createTextOutput(JSON.stringify({ status: "success", row: row, likes: updatedVal }))
         .setMimeType(ContentService.MimeType.JSON);
     }
@@ -173,6 +197,7 @@ function handleLike(ss, params) {
       var cur = Number(data[i][3]) || 1;
       var updated = explicitLikes !== null && !isNaN(explicitLikes) ? Math.max(0, explicitLikes) : Math.max(0, cur + delta);
       sheet.getRange(i + 1, 4).setValue(updated);
+      try { CacheService.getScriptCache().remove("cache_ucapan_data"); } catch (eC) { }
       return ContentService.createTextOutput(JSON.stringify({ status: "success", row: i + 1, likes: updated }))
         .setMimeType(ContentService.MimeType.JSON);
     }
@@ -214,7 +239,7 @@ const GOOGLE_SCRIPT_URL = "";
 ```
 Tampal URL Web App anda di antara dua tanda petik tersebut:
 ```javascript
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxNFd6eqBMXCRO4CNvshZgxbgOz3rG0aTW5tTiTilt1AEUdJKUSaF1CjDDs9zyxhzBt/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyAzrjRXcTf6ERBbQi2VziqLT1zVDtJNEuO0ZP2txE5ofQybfe0w3qM28yrnz9IyeHV/exec";
 ```
 
 Siap! Selepas itu:

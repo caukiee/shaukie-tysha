@@ -23,6 +23,18 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+    <!-- Preconnect & Pra-muat Awal Google Apps Script untuk Ucapan Pantas -->
+    <link rel="preconnect" href="https://script.google.com" crossorigin>
+    <link rel="preconnect" href="https://script.googleusercontent.com" crossorigin>
+    <link rel="dns-prefetch" href="https://script.google.com">
+    <link rel="dns-prefetch" href="https://script.googleusercontent.com">
+    <script>
+        // Memulakan pengambilan senarai ucapan seawal mungkin serentak dengan muatan halaman
+        window.__ucapanEarlyPromise = fetch("https://script.google.com/macros/s/AKfycbyAzrjRXcTf6ERBbQi2VziqLT1zVDtJNEuO0ZP2txE5ofQybfe0w3qM28yrnz9IyeHV/exec?action=get_ucapan")
+            .then(function(res) { return res.json(); })
+            .catch(function() { return null; });
+    </script>
+
     <style>
         :root {
             /* 1. Colour Theme Specified by User */
@@ -1323,6 +1335,53 @@
                 transform: scale(1);
             }
         }
+
+        /* Skeleton Loading Animation untuk Buku Ucapan (Pantas & Elegan) */
+        .wish-skeleton {
+            background: #fffafa;
+            border-left: 3px solid rgba(139, 30, 63, 0.25);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wish-skeleton::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            transform: translateX(-100%);
+            background-image: linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0) 0,
+                rgba(255, 240, 243, 0.7) 50%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            animation: wishSkeletonShimmer 1.4s ease-in-out infinite;
+        }
+
+        @keyframes wishSkeletonShimmer {
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        .skeleton-line {
+            height: 12px;
+            background: #f3e2e5;
+            border-radius: 6px;
+            margin-bottom: 8px;
+        }
+
+        .skeleton-line.short { width: 38%; height: 14px; }
+        .skeleton-line.full { width: 95%; }
+        .skeleton-line.medium { width: 72%; }
+        .skeleton-line.btn { width: 68px; height: 26px; border-radius: 13px; margin-top: 6px; }
 
         /* Salam Kaut & DuitNow QR */
         .bank-box {
@@ -2664,7 +2723,7 @@
         // ==========================================
         // KONFIGURASI GOOGLE SHEETS (100% PERCUMA)
         // ==========================================
-        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxNFd6eqBMXCRO4CNvshZgxbgOz3rG0aTW5tTiTilt1AEUdJKUSaF1CjDDs9zyxhzBt/exec";
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyAzrjRXcTf6ERBbQi2VziqLT1zVDtJNEuO0ZP2txE5ofQybfe0w3qM28yrnz9IyeHV/exec";
 
         // Fungsi pembantu hantar data ke Google Sheets
         async function hantarKeGoogleSheets(payload) {
@@ -2839,20 +2898,27 @@
                 console.error("Gagal membaca cache ucapan:", e);
             }
 
-            // Jika belum ada sebarang ucapan dalam simpanan peranti, tunjukkan penunjuk muatan pantas
+            // Jika peranti belum ada cache, paparkan placeholder shimmer elegan (tiada kelipan atau spinner lama)
             if (!hasCached) {
                 const container = document.getElementById('wishes-container');
                 if (container) {
                     container.innerHTML = `
-                        <div style="text-align: center; padding: 22px 16px; color: var(--text-muted); font-size: 0.85rem; background: rgba(255,248,244,0.6); border-radius: 14px; border: 1px dashed rgba(212,175,124,0.35); margin-top: 15px;">
-                            <i class="fas fa-circle-notch fa-spin" style="font-size: 1.4rem; color: var(--champagne-gold); margin-bottom: 8px; display: block;"></i>
-                            Menyemak buku ucapan...
+                        <div class="wish-skeleton">
+                            <div class="skeleton-line short"></div>
+                            <div class="skeleton-line full"></div>
+                            <div class="skeleton-line medium"></div>
+                            <div class="skeleton-line btn"></div>
+                        </div>
+                        <div class="wish-skeleton">
+                            <div class="skeleton-line short"></div>
+                            <div class="skeleton-line full"></div>
+                            <div class="skeleton-line btn"></div>
                         </div>
                     `;
                 }
             }
 
-            // 2. LANGKAH LATAR BELAKANG: Ambil data live secara tidak menyekat (asynchronous)
+            // 2. LANGKAH LATAR BELAKANG: Ambil data live (guna janji temu pra-muat awal jika ada)
             segerakanUcapanLive(hasCached);
         }
 
@@ -2863,22 +2929,35 @@
             }
 
             try {
-                // AbortController timeout 6 saat untuk sambungan perlahan
-                const controller = new AbortController();
-                const timeoutId = setTimeout(() => controller.abort(), 6000);
+                let json = null;
 
-                const res = await fetch(GOOGLE_SCRIPT_URL + "?action=get_ucapan", {
-                    signal: controller.signal
-                });
-                clearTimeout(timeoutId);
+                // Gunakan hasil pra-muatan awal yang telah dimulakan dari <head>
+                if (window.__ucapanEarlyPromise) {
+                    try {
+                        json = await window.__ucapanEarlyPromise;
+                        window.__ucapanEarlyPromise = null;
+                    } catch (e) {
+                        json = null;
+                    }
+                }
 
-                const json = await res.json();
+                // Fallback fetch jika pra-muat tidak tersedia
+                if (!json) {
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), 6000);
+                    const res = await fetch(GOOGLE_SCRIPT_URL + "?action=get_ucapan", {
+                        signal: controller.signal
+                    });
+                    clearTimeout(timeoutId);
+                    json = await res.json();
+                }
+
                 if (json && json.status === "success" && Array.isArray(json.data)) {
                     const filteredLive = json.data.filter(w => !isDummyWish(w));
                     const liveStr = JSON.stringify(filteredLive);
                     const currentStr = JSON.stringify(currentWishes);
 
-                    // Hanya kemaskini UI jika ada perubahan rekod bagi mengelakkan kelipan
+                    // Hanya kemaskini UI jika ada rekod baharu atau jika sebelum ini hanya skeleton
                     if (liveStr !== currentStr || !hasCached) {
                         currentWishes = filteredLive;
                         localStorage.setItem('wishes_shaukie_tysha', liveStr);
